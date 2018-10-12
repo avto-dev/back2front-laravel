@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack;
 
@@ -27,40 +27,6 @@ class StackServiceProvider extends ServiceProvider
         $this->registerService();
 
         $this->registerBlade();
-    }
-
-    /**
-     * Register Blade directives.
-     *
-     * @return void
-     */
-    protected function registerBlade()
-    {
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
-            $blade->directive('back_to_front_data', function ($stack_name = null) {
-                /** @var BackendToFrontendVariablesInterface $service */
-                $service    = $this->app->make(BackendToFrontendVariablesInterface::class);
-                $stack_name = \trim($stack_name ?? config('back-to-front.data_name'), ' \'"');
-                $tag_text   = '<script type="text/javascript">' .
-                              '    Object.defineProperty(window, "' . $stack_name . '", {' .
-                              '        writable: false,' .
-                              '        value: ' . $service->toJson() .
-                              '    });' .
-                              '</script>';
-
-                return "<?php echo '{$tag_text}'; ?>";
-            });
-        });
-    }
-
-    /**
-     * Register package service.
-     *
-     * @return void
-     */
-    protected function registerService()
-    {
-        $this->app->singleton(BackendToFrontendVariablesInterface::class, BackendToFrontendVariablesStack::class);
     }
 
     /**https://github.com/avto-dev/app-version-laravel/blob/master/tests/BladeRenderTest.php
@@ -101,6 +67,40 @@ class StackServiceProvider extends ServiceProvider
     public function registerHelpers()
     {
         require_once __DIR__ . '/helpers.php';
+    }
+
+    /**
+     * Register Blade directives.
+     *
+     * @return void
+     */
+    protected function registerBlade()
+    {
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
+            $blade->directive('back_to_front_data', function ($stack_name = null) {
+                /** @var BackendToFrontendVariablesInterface $service */
+                $service    = $this->app->make(BackendToFrontendVariablesInterface::class);
+                $stack_name = \trim($stack_name ?? config('back-to-front.data_name'), ' \'"');
+                $tag_text   = '<script type="text/javascript">' .
+                              '    Object.defineProperty(window, "' . $stack_name . '", {' .
+                              '        writable: false,' .
+                              '        value: ' . $service->toJson() .
+                              '    });' .
+                              '</script>';
+
+                return "<?php echo '{$tag_text}'; ?>";
+            });
+        });
+    }
+
+    /**
+     * Register package service.
+     *
+     * @return void
+     */
+    protected function registerService()
+    {
+        $this->app->singleton(BackendToFrontendVariablesInterface::class, BackendToFrontendVariablesStack::class);
     }
 
     /**

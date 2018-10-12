@@ -1,17 +1,17 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack\Service;
 
-use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
 use DateTime;
-use Illuminate\Config\Repository as ConfigRepository;
-use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
 use Traversable;
 use Tarampampam\Wrappers\Json;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Config\Repository as ConfigRepository;
+use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
+use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
 class BackendToFrontendVariablesStack extends Collection implements BackendToFrontendVariablesInterface
@@ -67,7 +67,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
 
     /**
      * Performs a recursive data traversal to the maximum specified level of nesting and converts the values to
-     * Arrays + formats the date.
+     *  * Arrays + formats the date.
      *
      * @param array|Traversable $data      Данные
      * @param int               $depth     Текущая глубина обхода

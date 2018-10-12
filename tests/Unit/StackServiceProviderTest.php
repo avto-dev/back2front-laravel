@@ -13,7 +13,7 @@ use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 class StackServiceProviderTest extends AbstractTestCase
 {
     /**
-     * @var string Ключ конфига.
+     * @var string Ключ конфига
      */
     protected $config_key = 'back-to-front';
 

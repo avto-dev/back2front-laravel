@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
 
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
+use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
 class BladeRenderTest extends AbstractTestCase
 {
