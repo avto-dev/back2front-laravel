@@ -1,3 +1,5 @@
+/** global: define */
+
 (function (root, factory) {
 
     "use strict";
@@ -22,8 +24,6 @@
         : this),
 
     function (root) {
-
-        console.log(root.frontStack);
 
         /**
          * Singletone instance.

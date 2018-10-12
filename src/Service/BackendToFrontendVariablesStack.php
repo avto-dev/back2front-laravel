@@ -94,7 +94,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
             return $value;
         };
 
-        return \array_map($map_closure, $data);
+        return \array_map($map_closure, (array) $data);
     }
 
     /**
