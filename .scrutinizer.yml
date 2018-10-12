@@ -39,7 +39,6 @@ build:
   nodes:
     js:
       environment:
-        php: false
         node: '9.4.0'
       dependencies:
         override:
