@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
