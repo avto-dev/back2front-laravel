@@ -1,0 +1,82 @@
+filter:
+  excluded_paths:
+  - tests/
+  dependency_paths:
+  - vendor/
+
+checks:
+  php:
+    code_rating: true
+    duplication: true
+
+build_failure_conditions:
+- 'elements.rating(<= D).exists'                                # No classes/methods with a rating of D or worse
+- 'project.metric_change("scrutinizer.test_coverage", < -0.07)' # Coverage decreased from prev. inspection > 7%
+
+build:
+  environment:
+    node: '9.4.0'
+    mysql: false
+    postgresql: false
+    mongodb: false
+    elasticsearch: false
+    redis: false
+    memcached: false
+    neo4j: false
+    rabbitmq: false
+
+  dependencies:
+    before:
+    - npm install istanbul mocha chai
+    override:
+    - composer update --no-interaction
+
+  tests:
+    override:
+    - command: 'vendor/bin/phpunit --coverage-clover=clover-file'
+      coverage:
+        file: 'clover-file'
+        format: 'clover'
+    - command: 'NODE_ENV=development ./node_modules/.bin/istanbul cover --report clover ./node_modules/.bin/_mocha -- ./js-tests/*-test.js'
+      coverage:
+        file: 'coverage/clover.xml'
+        format: 'clover'
+
+  nodes:
+    php70-lowest:
+      environment:
+        php: 7.0
+      dependencies:
+        override:
+        - composer update --no-interaction --prefer-lowest
+
+    php70:
+      environment:
+        php: 7.0
+
+    php71-lowest:
+      environment:
+        php: 7.1
+      dependencies:
+        override:
+        - composer update --no-interaction --prefer-lowest
+
+    php71:
+      environment:
+        php: 7.1
+
+    php72-lowest:
+      environment:
+        php: 7.2
+      dependencies:
+        override:
+        - composer update --no-interaction --prefer-lowest
+
+    php72:
+      environment:
+        php: 7.2
+
+    analysis:
+      tests:
+        override:
+        - php-scrutinizer-run --enable-security-analysis

@@ -1,0 +1,18 @@
+# Composer lock file
+composer.lock
+
+# IDEs
+/nbproject
+/.idea
+
+# Vendors
+/vendor
+/node_modules
+
+# Temp dirs & trash
+/temp
+/tmp
+/coverage
+clover-file
+package-lock.json
+.DS_Store

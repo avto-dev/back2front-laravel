@@ -1,0 +1,55 @@
+{
+    "name": "avto-dev/back2front-laravel",
+    "description": "Laravel package for sending data from backend to frontend over JavaScript object",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Avto Develop",
+            "homepage": "https://github.com/avto-dev"
+        }
+    ],
+    "require": {
+        "php": ">=7.0 <7.3",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "illuminate/support": ">=5.3.0 <5.8.0",
+        "tarampampam/wrappers-php": "^1.2"
+    },
+    "require-dev": {
+        "laravel/laravel": ">=5.3.0 <5.8.0",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "^6.5 || ~7.0",
+        "symfony/var-dumper": "~3.2 || ^4.0",
+        "avto-dev/dev-tools": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "AvtoDev\\BackendToFrontendVariablesStack\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AvtoDev\\BackendToFrontendVariablesStack\\Tests\\": "tests"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/avto-dev/back2front-laravel/issues",
+        "source": "https://github.com/avto-dev/back2front-laravel"
+    },
+    "scripts": {
+        "test": "@php ./vendor/bin/phpunit --no-coverage",
+        "test-cover": "@php ./vendor/bin/phpunit --coverage-html='./coverage/html'"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AvtoDev\\BackendToFrontendVariablesStack\\StackServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "prefer-stable": true
+}
