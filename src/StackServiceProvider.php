@@ -80,8 +80,6 @@ class StackServiceProvider extends ServiceProvider
     {
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
             $blade->directive('back_to_front_data', function ($stack_name = null) {
-                /** @var BackendToFrontendVariablesInterface $service */
-                $service = $this->app->make(BackendToFrontendVariablesInterface::class);
                 /** @var ConfigRepository $config */
                 $config = $this->app->make(ConfigRepository::class);
 
@@ -92,7 +90,7 @@ class StackServiceProvider extends ServiceProvider
                 $tag_text   = '<script type="text/javascript">' .
                               'Object.defineProperty(window, "' . $stack_name . '", {' .
                               'writable: false, ' .
-                              'value: ' . $service->toJson() .
+                              'value:  \', backToFrontStack()->toJson() , \' '.
                               '});' .
                               '</script>';
 
