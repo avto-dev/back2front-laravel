@@ -2,10 +2,10 @@
 
 namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
 
-use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 use DateTime;
-use Illuminate\Contracts\Support\Arrayable;
 use Tarampampam\Wrappers\Json;
+use Illuminate\Contracts\Support\Arrayable;
+use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
@@ -63,7 +63,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
         // Set data
         $this->service->put('test', $test_data);
 
-        $result = $this->service->toArray();
+        $result      = $this->service->toArray();
         $test_result = $result['test'];
 
         $this->assertEquals($test_data[0], $test_result[0]);
@@ -253,5 +253,4 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
 
         $this->assertFalse($this->service->has($test_key));
     }
-
 }

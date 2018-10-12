@@ -2,8 +2,8 @@
 
 namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
 
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
+use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
 /**
  * Helper test to the data transfer service from the back to the front.

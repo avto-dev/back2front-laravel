@@ -2,9 +2,9 @@
 
 namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
 
-use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
-use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 use Illuminate\Foundation\Application;
+use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
+use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
 
 abstract class AbstractTestCase extends AbstractLaravelTestCase
 {
