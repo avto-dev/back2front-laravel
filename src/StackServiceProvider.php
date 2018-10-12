@@ -1,11 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
@@ -29,7 +31,7 @@ class StackServiceProvider extends ServiceProvider
         $this->registerBlade();
     }
 
-    /**https://github.com/avto-dev/app-version-laravel/blob/master/tests/BladeRenderTest.php
+    /**
      * Gets config key name.
      *
      * @return string
@@ -79,13 +81,19 @@ class StackServiceProvider extends ServiceProvider
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
             $blade->directive('back_to_front_data', function ($stack_name = null) {
                 /** @var BackendToFrontendVariablesInterface $service */
-                $service    = $this->app->make(BackendToFrontendVariablesInterface::class);
-                $stack_name = \trim($stack_name ?? config('back-to-front.data_name'), ' \'"');
+                $service = $this->app->make(BackendToFrontendVariablesInterface::class);
+                /** @var ConfigRepository $config */
+                $config = $this->app->make(ConfigRepository::class);
+
+                $stack_name = Str::slug((\is_string($stack_name) && $stack_name !== '')
+                    ? $stack_name
+                    : $config->get(static::getConfigRootKeyName() . '.stack_name'));
+
                 $tag_text   = '<script type="text/javascript">' .
-                              '    Object.defineProperty(window, "' . $stack_name . '", {' .
-                              '        writable: false,' .
-                              '        value: ' . $service->toJson() .
-                              '    });' .
+                              'Object.defineProperty(window, "' . $stack_name . '", {' .
+                              'writable: false, ' .
+                              'value: ' . $service->toJson() .
+                              '});' .
                               '</script>';
 
                 return "<?php echo '{$tag_text}'; ?>";

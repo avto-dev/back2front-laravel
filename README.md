@@ -55,8 +55,7 @@ For publish config and assets execute in console next command:
 php artisan vendor:publish --provider="AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider"
 ```
 
-This command will publish files `config/back2front.php` with basic setting for package and `public/vendor/back2front/front-stack` with JavaScript object for access data.
-
+This command will publish files `config/back-to-front.php` with basic setting for package and `public/vendor/back-to-front/front-stack.js` with JavaScript object for access data.
 
 ## Usage
 
@@ -65,6 +64,8 @@ This command will publish files `config/back2front.php` with basic setting for p
 To get the stack object at backend you can use global helper:
 
 ```php
+<?php
+
 backToFrontStack();
 ```
 
@@ -73,10 +74,8 @@ or getting object from service container:
 ```php
 use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
-// ...
-
-/** @var BackendToFrontendVariablesInterface $b2f_stack */
-$b2f_stack = resolve(BackendToFrontendVariablesInterface::class);
+/** @var BackendToFrontendVariablesInterface $service */
+$service = resolve(BackendToFrontendVariablesInterface::class);
 ```
 
 ##### Methods
@@ -97,6 +96,8 @@ Also you can iterate object.
 BackendToFrontendVariablesStack supports dot notation in `put`, `get`, `has` and `forget` methods.
 
 ```php
+<?php
+
 backToFrontStack()->put('user.name', 'John Doe');
 ```
 
@@ -123,26 +124,23 @@ For output data at frontend you should add following code in your blade-template
 </script>
 ```
 
-OR by blade-directive
+**Or** by blade-directive
 
 ```html
 @back_to_front_data('DATA_PROPERTY_NAME')
 ```
 
-It creates property with name equals `DATA_PROPERTY_NAME` for superglobal object `window` with early added data.
+It creates property with name equals `DATA_PROPERTY_NAME` for superg lobal object `window` with early added data.
 
-Default value of DATA_PROPERTY_NAME is 'backend'. If you use custom value and want to use front-stack helper on frontend, than you need call ```window.frontStack.setStackName('custom_name');```
-before helper usage.
-
+Default value of DATA_PROPERTY_NAME is 'backend'. If you use custom value and want to use front-stack helper on frontend, than you need call `window.frontStack.setStackName('custom_name');` before helper usage.
 
 **Package contains javaScript helper for access to data object.**
 
 Use it you may adding js file at page:
 
 ```html
-<script src="/vendor/back2front/front-stack.js" type="text/javascript"></script>
+<script src="/vendor/back-to-front/front-stack.js" type="text/javascript"></script>
 ```
-
 
 > **You also can use it as require.js dependency.**
 
@@ -178,9 +176,9 @@ For package testing we use `phpunit` framework. Just write into your terminal:
 $ git clone git@github.com:avto-dev/back2front-laravel.git ./back2front-laravel && cd $_
 $ composer install
 $ composer test
+$ npm install
+$ npm test
 ```
-
-### JS testing
 
 For testing JavaScript code using `Mocha` and `Chai` framework.
 
