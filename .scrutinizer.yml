@@ -45,7 +45,7 @@ build:
         - npm install istanbul mocha chai
       tests:
         override:
-        - command: 'NODE_ENV=development ./node_modules/.bin/istanbul cover --report clover ./node_modules/.bin/_mocha -- ./js-tests/*-test.js'
+        - command: 'NODE_ENV=development ./node_modules/.bin/istanbul cover --report clover ./node_modules/.bin/_mocha -- ./tests/js/*-test.js'
           coverage:
             file: 'coverage/clover.xml'
             format: 'clover'

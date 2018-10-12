@@ -4,7 +4,7 @@
 var assert = require('chai').assert,
     expect = require('chai').expect;
 
-var frontStack = require('../src/assets/front-stack.js');
+var frontStack = require('../../src/assets/front-stack.js');
 
 /**
  * Object name that use extracting any variables passed from backend.
