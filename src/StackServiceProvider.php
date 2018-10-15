@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack;
 
@@ -87,12 +87,12 @@ class StackServiceProvider extends ServiceProvider
                     ? $stack_name
                     : $config->get(static::getConfigRootKeyName() . '.stack_name'));
 
-                $tag_text   = '<script type="text/javascript">' .
-                              'Object.defineProperty(window, "' . $stack_name . '", {' .
-                              'writable: false, ' .
-                              'value:  \', backToFrontStack()->toJson() , \' '.
-                              '});' .
-                              '</script>';
+                $tag_text = '<script type="text/javascript">' .
+                            'Object.defineProperty(window, "' . $stack_name . '", {' .
+                            'writable: false, ' .
+                            'value:  \', resolve( ' . BackendToFrontendVariablesInterface::class . '::class )->toJson() , \' ' .
+                            '});' .
+                            '</script>';
 
                 return "<?php echo '{$tag_text}'; ?>";
             });
