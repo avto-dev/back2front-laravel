@@ -76,7 +76,7 @@ class BladeRenderTest extends AbstractTestCase
 
         $rendered = $view->make('stubs::view')->render();
 
-        $this->assertContains( 'foo', $rendered);
+        $this->assertContains('foo', $rendered);
 
         // Set another state
         $service->put('test_key', 'bar2');
@@ -85,7 +85,7 @@ class BladeRenderTest extends AbstractTestCase
         $rendered2 = $view->make('stubs::view')->render();
 
         // See actual data
-        $this->assertNotContains( 'foo', $rendered2);
+        $this->assertNotContains('foo', $rendered2);
         $this->assertContains('test_key', $rendered2);
     }
 }
