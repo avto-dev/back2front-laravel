@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Getting data for blade directive
+- Getting data for blade directive [2]
 
 ## v1.0.2
 
@@ -23,3 +23,5 @@
 ### Added
 
 - First release
+
+[2]:https://github.com/avto-dev/back2front-laravel/issues/2
