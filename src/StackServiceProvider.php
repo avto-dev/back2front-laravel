@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack;
 
@@ -80,8 +80,6 @@ class StackServiceProvider extends ServiceProvider
     {
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
             $blade->directive('back_to_front_data', function ($stack_name = null) {
-                /** @var BackendToFrontendVariablesInterface $service */
-                $service = $this->app->make(BackendToFrontendVariablesInterface::class);
                 /** @var ConfigRepository $config */
                 $config = $this->app->make(ConfigRepository::class);
 
@@ -89,14 +87,19 @@ class StackServiceProvider extends ServiceProvider
                     ? $stack_name
                     : $config->get(static::getConfigRootKeyName() . '.stack_name'));
 
-                $tag_text   = '<script type="text/javascript">' .
-                              'Object.defineProperty(window, "' . $stack_name . '", {' .
-                              'writable: false, ' .
-                              'value: ' . $service->toJson() .
-                              '});' .
-                              '</script>';
-
-                return "<?php echo '{$tag_text}'; ?>";
+                return \sprintf(
+                    '<?php echo \'<script type="text/javascript">
+                                Object.defineProperty(
+                                    window, "%s", 
+                                    {
+                                        writable: false, 
+                                        value:  \', resolve( \'%s\' )->toJson() , \' 
+                                    }
+                                );
+                            </script>\'; ?>',
+                    $stack_name,
+                    BackendToFrontendVariablesInterface::class
+                );
             });
         });
     }
