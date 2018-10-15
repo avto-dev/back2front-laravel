@@ -78,9 +78,6 @@ class BladeRenderTest extends AbstractTestCase
 
         $this->assertContains( 'foo', $rendered);
 
-        // Cache all templates
-        $this->artisan('view:cache');
-
         // Set another state
         $service->put('test_key', 'bar2');
         $service->forget('foo');
