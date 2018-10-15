@@ -56,4 +56,39 @@ class BladeRenderTest extends AbstractTestCase
             $this->assertContains((string) $value, $rendered);
         }
     }
+
+    /**
+     * Rendering test.
+     *
+     * @return void
+     */
+    public function testRenderCaching()
+    {
+        /** @var BackendToFrontendVariablesInterface $service */
+        $service = $this->app->make(BackendToFrontendVariablesInterface::class);
+        /** @var ViewFactory $view */
+        $view = $this->app->make(ViewFactory::class);
+
+        $view->addNamespace('stubs', __DIR__ . '/../stubs/view');
+
+        // Set first state
+        $service->put('foo', 'bar');
+
+        $rendered = $view->make('stubs::view')->render();
+
+        $this->assertContains( 'foo', $rendered);
+
+        // Cache all templates
+        $this->artisan('view:cache');
+
+        // Set another state
+        $service->put('test_key', 'bar2');
+        $service->forget('foo');
+
+        $rendered2 = $view->make('stubs::view')->render();
+
+        // See actual data
+        $this->assertNotContains( 'foo', $rendered2);
+        $this->assertContains('test_key', $rendered2);
+    }
 }

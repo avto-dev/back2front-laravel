@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.x.x
+
+### Fixed
+
+- Getting data for blade directive
+
 ## v1.0.2
 
 ### Fixed

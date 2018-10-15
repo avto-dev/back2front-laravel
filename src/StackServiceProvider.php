@@ -87,14 +87,19 @@ class StackServiceProvider extends ServiceProvider
                     ? $stack_name
                     : $config->get(static::getConfigRootKeyName() . '.stack_name'));
 
-                $tag_text = '<script type="text/javascript">' .
-                            'Object.defineProperty(window, "' . $stack_name . '", {' .
-                            'writable: false, ' .
-                            'value:  \', resolve( ' . BackendToFrontendVariablesInterface::class . '::class )->toJson() , \' ' .
-                            '});' .
-                            '</script>';
-
-                return "<?php echo '{$tag_text}'; ?>";
+                return \sprintf(
+                    '<?php echo \'<script type="text/javascript">
+                                Object.defineProperty(
+                                    window, "%s", 
+                                    {
+                                        writable: false, 
+                                        value:  \', resolve( \'%s\' )->toJson() , \' 
+                                    }
+                                );
+                            </script>\'; ?>',
+                    $stack_name,
+                    BackendToFrontendVariablesInterface::class
+                );
             });
         });
     }
