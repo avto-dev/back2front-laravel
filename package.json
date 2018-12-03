@@ -10,6 +10,6 @@
         "mocha": "^5.2.0"
     },
     "scripts": {
-        "test": "istanbul cover _mocha ./tests/js/*-test.js"
+        "test": "./node_modules/.bin/istanbul cover --report clover ./node_modules/.bin/_mocha -- ./tests/js/*-test.js"
     }
 }

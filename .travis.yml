@@ -34,10 +34,11 @@ matrix:
   include:
   - language: node_js
     node_js: 9.4.0
+    env: NODE_ENV=development
     install:
-    - npm install istanbul mocha chai
+    - npm install
     script:
-    - NODE_ENV=development ./node_modules/.bin/istanbul cover --report clover ./node_modules/.bin/_mocha -- ./tests/js/*-test.js
+    - npm test
 
   - php: 7.0
   - php: 7.0
