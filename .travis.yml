@@ -34,7 +34,7 @@ matrix:
   include:
   - language: node_js
     node_js: 9.4.0
-    env: NODE_ENV=development
+    env: NODE_ENV=development coverage=true
     install:
     - npm install
     script:
