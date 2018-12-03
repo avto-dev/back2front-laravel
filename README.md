@@ -8,7 +8,7 @@
 [![Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
 [![Coverage][badge_coverage]][link_coverage]
-[![Code quality][badge_code_quality]][link_coverage]
+[![Code quality][badge_code_quality]][link_code_quality]
 [![Downloads count][badge_downloads_count]][link_packagist]
 [![License][badge_license]][link_license]
 
@@ -21,7 +21,7 @@ Package a repository of the form `"key" => "value"` and methods for converting d
 Require this package with composer using the following command:
 
 ```shell
-$ composer require avto-dev/back2front-laravel "^1.0"
+$ composer require avto-dev/back2front-laravel "^1.1"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
@@ -202,22 +202,23 @@ If you will find any package errors, please, [make an issue][link_create_issue] 
 
 This is open-sourced software licensed under the [MIT License][link_license].
 
-[badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180
-[badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/back2front-laravel.svg?style=flat-square&longCache=true
-[badge_build_status]:https://img.shields.io/scrutinizer/build/g/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180&logo=scrutinizer
-[badge_code_quality]:https://img.shields.io/scrutinizer/g/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180
-[badge_coverage]:https://img.shields.io/scrutinizer/coverage/g/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180
-[badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180
-[badge_license]:https://img.shields.io/packagist/l/avto-dev/back2front-laravel.svg?style=flat-square&longCache=true
+[badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/back2front-laravel.svg?maxAge=180
+[badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/back2front-laravel.svg?longCache=true
+[badge_build_status]:https://travis-ci.org/avto-dev/back2front-laravel.svg?branch=master
+[badge_code_quality]:https://img.shields.io/scrutinizer/g/avto-dev/back2front-laravel.svg?maxAge=180
+[badge_coverage]:https://img.shields.io/codecov/c/github/avto-dev/back2front-laravel/master.svg?maxAge=60
+[badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/back2front-laravel.svg?maxAge=180
+[badge_license]:https://img.shields.io/packagist/l/avto-dev/back2front-laravel.svg?longCache=true
 [badge_release_date]:https://img.shields.io/github/release-date/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180
 [badge_commits_since_release]:https://img.shields.io/github/commits-since/avto-dev/back2front-laravel/latest.svg?style=flat-square&maxAge=180
 [badge_issues]:https://img.shields.io/github/issues/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180
 [badge_pulls]:https://img.shields.io/github/issues-pr/avto-dev/back2front-laravel.svg?style=flat-square&maxAge=180
 [link_releases]:https://github.com/avto-dev/back2front-laravel/releases
 [link_packagist]:https://packagist.org/packages/avto-dev/back2front-laravel
-[link_build_status]:https://scrutinizer-ci.com/g/avto-dev/back2front-laravel/build-status/master
-[link_coverage]:https://scrutinizer-ci.com/g/avto-dev/back2front-laravel/?branch=master
+[link_build_status]:https://travis-ci.org/avto-dev/back2front-laravel
+[link_coverage]:https://codecov.io/gh/avto-dev/back2front-laravel/
 [link_changes_log]:https://github.com/avto-dev/back2front-laravel/blob/master/CHANGELOG.md
+[link_code_quality]:https://scrutinizer-ci.com/g/avto-dev/back2front-laravel/
 [link_issues]:https://github.com/avto-dev/back2front-laravel/issues
 [link_create_issue]:https://github.com/avto-dev/back2front-laravel/issues/new/choose
 [link_commits]:https://github.com/avto-dev/back2front-laravel/commits
