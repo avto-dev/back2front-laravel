@@ -19,9 +19,9 @@
     "require-dev": {
         "laravel/laravel": ">=5.3.0 <5.8.0",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "^6.5 || ~7.0",
+        "phpunit/phpunit": "^6.5 || ~7.0 <7.5.0",
         "symfony/var-dumper": "~3.2 || ^4.0",
-        "avto-dev/dev-tools": "^1.5"
+        "avto-dev/dev-tools": "^1.7"
     },
     "autoload": {
         "psr-4": {

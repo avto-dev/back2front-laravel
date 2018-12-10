@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.1.1
+
+### Changed
+
+- Maximal `phpunit` version now is `7.4.x`. Reason - since `7.5.0` frameworks contains assertions like `assertIsString`, `assertIsArray` and others, already declared in package `avto-dev/dev-tools`
+
 ## v1.1.0
 
 ### Changed
