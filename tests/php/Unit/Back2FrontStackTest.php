@@ -6,8 +6,8 @@ namespace AvtoDev\Back2Front\Tests\Unit;
 
 use DateTime;
 use Tarampampam\Wrappers\Json;
-use Illuminate\Contracts\Support\Arrayable;
 use AvtoDev\Back2Front\Back2FrontInterface;
+use Illuminate\Contracts\Support\Arrayable;
 use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
