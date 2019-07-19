@@ -25,20 +25,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     }
 
     /**
-     * Initialize configs.
-     *
-     * @return void
-     */
-    protected function initializeConfigs(): void
-    {
-        $this->mergeConfigFrom(static::getConfigPath(), static::getConfigRootKeyName());
-
-        $this->publishes([
-            \realpath(static::getConfigPath()) => config_path(\basename(static::getConfigPath())),
-        ], 'config');
-    }
-
-    /**
      * Get config file path.
      *
      * @return string
@@ -59,18 +45,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     }
 
     /**
-     * Initialize assets.
-     *
-     * @return void
-     */
-    protected function initializeAssets(): void
-    {
-        $this->publishes([
-            \realpath(static::getAssetsDirPath()) => public_path('vendor/back-to-front'),
-        ], 'assets');
-    }
-
-    /**
      * Get assets path.
      *
      * @return string
@@ -88,6 +62,32 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function registerHelpers(): void
     {
         require_once __DIR__ . '/helpers.php';
+    }
+
+    /**
+     * Initialize configs.
+     *
+     * @return void
+     */
+    protected function initializeConfigs(): void
+    {
+        $this->mergeConfigFrom(static::getConfigPath(), static::getConfigRootKeyName());
+
+        $this->publishes([
+            \realpath(static::getConfigPath()) => config_path(\basename(static::getConfigPath())),
+        ], 'config');
+    }
+
+    /**
+     * Initialize assets.
+     *
+     * @return void
+     */
+    protected function initializeAssets(): void
+    {
+        $this->publishes([
+            \realpath(static::getAssetsDirPath()) => public_path('vendor/back-to-front'),
+        ], 'assets');
     }
 
     /**
