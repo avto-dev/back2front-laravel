@@ -6,9 +6,23 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### v2.0.0
 
+### Added
+
+- Docker-based environment for development
+- Project `Makefile`
+
 ### Changed
 
-- ...
+- Minimal `PHP` version now is `^7.1.3`
+- Minimal `Laravel` version now is `5.5.x`
+- Maximal `Laravel` version now is `5.8.x`
+- Dependency `laravel/framework` changed to `illuminate/*`
+- Composer scripts
+- Package scripts
+- Root namespace from `BackendToFrontendVariablesStack` to `Back2Front`
+- `\AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider` &rarr; `\AvtoDev\Back2Front\ServiceProvider`
+- `\AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack` &rarr; `\AvtoDev\Back2Front\Back2FrontStack`
+- `\AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface` &rarr; `\AvtoDev\Back2Front\Back2FrontInterface`
 
 ## v1.1.1
 
