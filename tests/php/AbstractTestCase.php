@@ -4,7 +4,7 @@ namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
 
 use Illuminate\Foundation\Application;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
+use AvtoDev\BackendToFrontendVariablesStack\ServiceProvider;
 
 abstract class AbstractTestCase extends AbstractLaravelTestCase
 {
@@ -13,6 +13,6 @@ abstract class AbstractTestCase extends AbstractLaravelTestCase
      */
     protected function afterApplicationBootstrapped(Application $app)
     {
-        $app->register(StackServiceProvider::class);
+        $app->register(ServiceProvider::class);
     }
 }

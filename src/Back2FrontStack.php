@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Service;
+namespace AvtoDev\BackendToFrontendVariablesStack;
 
 use DateTime;
 use Traversable;
@@ -11,10 +11,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Config\Repository as ConfigRepository;
 use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
-use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
 
-class BackendToFrontendVariablesStack extends Collection implements BackendToFrontendVariablesInterface
+class Back2FrontStack extends Collection implements Back2FrontInterface
 {
     /**
      * Date format DateTime object conversion.
@@ -31,7 +30,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     protected $max_recursion_depth;
 
     /**
-     * BackendToFrontendVariablesStack constructor.
+     * Back2FrontStack constructor.
      *
      * @param ConfigRepository $config
      */
@@ -39,7 +38,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     {
         parent::__construct();
 
-        $config_root = StackServiceProvider::getConfigRootKeyName();
+        $config_root = ServiceProvider::getConfigRootKeyName();
 
         $this->date_format         = $config->get("{$config_root}.date_format", 'Y-m-d H:i:s');
         $this->max_recursion_depth = $config->get("{$config_root}.max_recursion_depth", 3);

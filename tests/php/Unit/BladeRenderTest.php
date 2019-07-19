@@ -7,14 +7,14 @@ namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
 
 class BladeRenderTest extends AbstractTestCase
 {
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,10 +26,10 @@ class BladeRenderTest extends AbstractTestCase
      *
      * @return void
      */
-    public function testRendering()
+    public function testRendering(): void
     {
-        /** @var BackendToFrontendVariablesInterface $service */
-        $service = $this->app->make(BackendToFrontendVariablesInterface::class);
+        /** @var Back2FrontInterface $service */
+        $service = $this->app->make(Back2FrontInterface::class);
         /** @var ViewFactory $view */
         $view = $this->app->make(ViewFactory::class);
         /** @var ConfigRepository $config */
@@ -62,10 +62,10 @@ class BladeRenderTest extends AbstractTestCase
      *
      * @return void
      */
-    public function testRenderCaching()
+    public function testRenderCaching(): void
     {
-        /** @var BackendToFrontendVariablesInterface $service */
-        $service = $this->app->make(BackendToFrontendVariablesInterface::class);
+        /** @var Back2FrontInterface $service */
+        $service = $this->app->make(Back2FrontInterface::class);
         /** @var ViewFactory $view */
         $view = $this->app->make(ViewFactory::class);
 

@@ -1,15 +1,15 @@
 <?php
 
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
 
-if (! function_exists('backToFrontStack')) {
+if (! \function_exists('backToFrontStack')) {
     /**
      * Get back2front service instance.
      *
-     * @return BackendToFrontendVariablesInterface
+     * @return Back2FrontInterface
      */
     function backToFrontStack()
     {
-        return resolve(BackendToFrontendVariablesInterface::class);
+        return \Illuminate\Container\Container::getInstance()->make(Back2FrontInterface::class);
     }
 }

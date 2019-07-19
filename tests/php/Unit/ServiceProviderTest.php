@@ -6,11 +6,11 @@ use Illuminate\Config\Repository as ConfigRepository;
 use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 
 /**
- * Class StackServiceProviderTest.
+ * Class ServiceProviderTest.
  *
  * @group back-to-front
  */
-class StackServiceProviderTest extends AbstractTestCase
+class ServiceProviderTest extends AbstractTestCase
 {
     /**
      * @var string Ключ конфига
@@ -20,7 +20,7 @@ class StackServiceProviderTest extends AbstractTestCase
     /**
      * Check config.
      */
-    public function testConfigExists()
+    public function testConfigExists(): void
     {
         $configs = $this->app->make(ConfigRepository::class)->get($this->config_key);
 

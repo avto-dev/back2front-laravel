@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace AvtoDev\BackendToFrontendVariablesStack;
 
 use Illuminate\Support\Str;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
 
-class StackServiceProvider extends ServiceProvider
+class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
      * Register services.
@@ -98,7 +96,7 @@ class StackServiceProvider extends ServiceProvider
                                 );
                             </script>\'; ?>',
                     $stack_name,
-                    BackendToFrontendVariablesInterface::class
+                    Back2FrontInterface::class
                 );
             });
         });
@@ -111,7 +109,7 @@ class StackServiceProvider extends ServiceProvider
      */
     protected function registerService()
     {
-        $this->app->singleton(BackendToFrontendVariablesInterface::class, BackendToFrontendVariablesStack::class);
+        $this->app->singleton(Back2FrontInterface::class, Back2FrontStack::class);
     }
 
     /**

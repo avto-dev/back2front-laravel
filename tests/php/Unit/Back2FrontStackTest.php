@@ -6,31 +6,31 @@ use DateTime;
 use Tarampampam\Wrappers\Json;
 use Illuminate\Contracts\Support\Arrayable;
 use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+use AvtoDev\BackendToFrontendVariablesStack\Back2FrontStack;
+use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
 
 /**
  * Test service for transferring data from the back to the front.
  *
- * @coversDefaultClass \AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack
+ * @coversDefaultClass \AvtoDev\BackendToFrontendVariablesStack\Back2FrontStack
  *
  * @group back-to-front
  */
-class BackendToFrontendVariablesServiceTest extends AbstractTestCase
+class Back2FrontStackTest extends AbstractTestCase
 {
     /**
-     * @var BackendToFrontendVariablesStack
+     * @var \AvtoDev\BackendToFrontendVariablesStack\Back2FrontStack
      */
     protected $service;
 
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $this->service = $this->app->make(BackendToFrontendVariablesInterface::class);
+        $this->service = $this->app->make(Back2FrontInterface::class);
     }
 
     /**
@@ -38,7 +38,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      *
      * @covers ::toArray
      */
-    public function testToArray()
+    public function testToArray(): void
     {
         $test_data = [
             0           => 123,
@@ -86,7 +86,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * @covers ::formatDataRecursive
      * @covers ::toArray
      */
-    public function testToArrayDeepScalar()
+    public function testToArrayDeepScalar(): void
     {
         $deep_array               = [];
         $test_deep_array_scalar   = str_random();
@@ -107,7 +107,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * @covers ::clearNoScalarsFromArrayRecursive
      * @covers ::toArray
      */
-    public function testToArrayStdObject()
+    public function testToArrayStdObject(): void
     {
         $this->service->put('test_obj', new \stdClass);
 
@@ -122,7 +122,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * @covers ::formatDataRecursive
      * @covers ::toArray
      */
-    public function testToArrayDateTime()
+    public function testToArrayDateTime(): void
     {
         $date_format = 'Y-m-d H:i:s';
 
@@ -142,7 +142,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * @covers ::formatDataRecursive
      * @covers ::clearNoScalarsFromArrayRecursive
      */
-    public function testToArrayDeepStdObject()
+    public function testToArrayDeepStdObject(): void
     {
         $deep_array               = [];
         $test_deep_array_object   = new \stdClass;
@@ -164,7 +164,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * @covers ::formatDataRecursive
      * @covers ::clearNoScalarsFromArrayRecursive
      */
-    public function testToArrayArrayable()
+    public function testToArrayArrayable(): void
     {
         $arrayable_mock = $this
             ->getMockBuilder(Arrayable::class)
@@ -188,7 +188,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      * @covers ::get
      * @covers ::toJson
      */
-    public function testPutGetToJson()
+    public function testPutGetToJson(): void
     {
         $test_data[]             = [str_random(), random_int(0, 100)];
         $test_data[]             = random_int(-10, 10);
@@ -226,7 +226,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      *
      * @covers ::has
      */
-    public function testHas()
+    public function testHas(): void
     {
         $test_key = str_random();
 
@@ -241,7 +241,7 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
      *
      * @covers ::forget
      */
-    public function testForget()
+    public function testForget(): void
     {
         $test_key = str_random();
 
