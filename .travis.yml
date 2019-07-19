@@ -35,6 +35,20 @@ after_success:
 
 matrix:
   include:
+    - language: node_js
+      cache:
+        yarn: true
+        directories:
+          - node_modules
+      node_js: stable
+      install:
+        - npm install -g codecov
+        - yarn install
+      script:
+        - yarn test-cover
+      after_success:
+        - codecov
+
     - php: 7.1.3
       env: setup=lowest
     - php: 7.1.3
