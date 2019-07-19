@@ -2,12 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace AvtoDev\BackendToFrontendVariablesStack;
+namespace AvtoDev\Back2Front;
 
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -16,27 +15,27 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->initializeConfigs();
-
         $this->initializeAssets();
-
         $this->registerHelpers();
-
         $this->registerService();
-
         $this->registerBlade();
     }
 
     /**
-     * Gets config key name.
+     * Initialize configs.
      *
-     * @return string
+     * @return void
      */
-    public static function getConfigRootKeyName()
+    protected function initializeConfigs(): void
     {
-        return basename(static::getConfigPath(), '.php');
+        $this->mergeConfigFrom(static::getConfigPath(), static::getConfigRootKeyName());
+
+        $this->publishes([
+            \realpath(static::getConfigPath()) => config_path(\basename(static::getConfigPath())),
+        ], 'config');
     }
 
     /**
@@ -44,9 +43,31 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return string
      */
-    public static function getConfigPath()
+    public static function getConfigPath(): string
     {
         return __DIR__ . '/config/back-to-front.php';
+    }
+
+    /**
+     * Gets config key name.
+     *
+     * @return string
+     */
+    public static function getConfigRootKeyName(): string
+    {
+        return \basename(static::getConfigPath(), '.php');
+    }
+
+    /**
+     * Initialize assets.
+     *
+     * @return void
+     */
+    protected function initializeAssets(): void
+    {
+        $this->publishes([
+            \realpath(static::getAssetsDirPath()) => public_path('vendor/back-to-front'),
+        ], 'assets');
     }
 
     /**
@@ -54,7 +75,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return string
      */
-    public static function getAssetsDirPath()
+    public static function getAssetsDirPath(): string
     {
         return __DIR__ . '/assets';
     }
@@ -64,9 +85,19 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return void
      */
-    public function registerHelpers()
+    public function registerHelpers(): void
     {
         require_once __DIR__ . '/helpers.php';
+    }
+
+    /**
+     * Register package service.
+     *
+     * @return void
+     */
+    protected function registerService(): void
+    {
+        $this->app->singleton(Back2FrontInterface::class, Back2FrontStack::class);
     }
 
     /**
@@ -74,10 +105,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @return void
      */
-    protected function registerBlade()
+    protected function registerBlade(): void
     {
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade) {
-            $blade->directive('back_to_front_data', function ($stack_name = null) {
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $blade): void {
+            $blade->directive('back_to_front_data', function ($stack_name = null): string {
                 /** @var ConfigRepository $config */
                 $config = $this->app->make(ConfigRepository::class);
 
@@ -100,41 +131,5 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 );
             });
         });
-    }
-
-    /**
-     * Register package service.
-     *
-     * @return void
-     */
-    protected function registerService()
-    {
-        $this->app->singleton(Back2FrontInterface::class, Back2FrontStack::class);
-    }
-
-    /**
-     * Initialize configs.
-     *
-     * @return void
-     */
-    protected function initializeConfigs()
-    {
-        $this->mergeConfigFrom(static::getConfigPath(), static::getConfigRootKeyName());
-
-        $this->publishes([
-            \realpath(static::getConfigPath()) => config_path(\basename(static::getConfigPath())),
-        ], 'config');
-    }
-
-    /**
-     * Initialize assets.
-     *
-     * @return void
-     */
-    protected function initializeAssets()
-    {
-        $this->publishes([
-            \realpath(static::getAssetsDirPath()) => public_path('vendor/back-to-front'),
-        ], 'assets');
     }
 }

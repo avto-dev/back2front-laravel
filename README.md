@@ -64,7 +64,7 @@ backToFrontStack();
 or getting object from service container:
 
 ```php
-use AvtoDev\BackendToFrontendVariablesStack\BackendToFrontendVariablesInterface;
+use AvtoDev\Back2Front\BackendToFrontendVariablesInterface;
 
 /** @var BackendToFrontendVariablesInterface $service */
 $service = resolve(BackendToFrontendVariablesInterface::class);
@@ -72,7 +72,7 @@ $service = resolve(BackendToFrontendVariablesInterface::class);
 
 ##### Methods
 
-BackendToFrontendVariablesStack object provides the following public methods:
+Back2Front object provides the following public methods:
 
 Method | Description
 ------ | ------------
@@ -85,7 +85,7 @@ Method | Description
 
 Also you can iterate object.
 
-BackendToFrontendVariablesStack supports dot notation in `put`, `get`, `has` and `forget` methods.
+Back2Front supports dot notation in `put`, `get`, `has` and `forget` methods.
 
 ```php
 <?php

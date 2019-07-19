@@ -1,6 +1,6 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack;
+namespace AvtoDev\Back2Front;
 
 use Countable;
 use Traversable;

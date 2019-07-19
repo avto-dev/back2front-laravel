@@ -1,4 +1,6 @@
 parameters:
   level: 'max'
+  autoload_files:
+    - %currentWorkingDirectory%/src/helpers.php
   paths:
     - src

@@ -19,3 +19,15 @@ services:
       - composer-data:/tmp/composer:cached
     networks:
       - app-network
+
+  node:
+    image: tarampampam/node:12-alpine
+    environment:
+      HOME: /tmp
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - .:/src:cached
+    working_dir: /src
+    networks:
+      - app-network

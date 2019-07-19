@@ -1,10 +1,12 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
+declare(strict_types = 1);
+
+namespace AvtoDev\Back2Front\Tests;
 
 use Illuminate\Foundation\Application;
+use AvtoDev\Back2Front\ServiceProvider;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\ServiceProvider;
 
 abstract class AbstractTestCase extends AbstractLaravelTestCase
 {

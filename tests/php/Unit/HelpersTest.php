@@ -1,9 +1,11 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
+declare(strict_types = 1);
 
-use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
+namespace AvtoDev\Back2Front\Tests\Unit;
+
+use AvtoDev\Back2Front\Back2FrontInterface;
+use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
  * Helper test to the data transfer service from the back to the front.

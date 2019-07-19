@@ -1,25 +1,26 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
+declare(strict_types = 1);
+
+namespace AvtoDev\Back2Front\Tests\Unit;
 
 use DateTime;
 use Tarampampam\Wrappers\Json;
 use Illuminate\Contracts\Support\Arrayable;
-use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\Back2FrontStack;
-use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
+use AvtoDev\Back2Front\Back2FrontInterface;
+use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
  * Test service for transferring data from the back to the front.
  *
- * @coversDefaultClass \AvtoDev\BackendToFrontendVariablesStack\Back2FrontStack
+ * @coversDefaultClass \AvtoDev\Back2Front\Back2FrontStack
  *
  * @group back-to-front
  */
 class Back2FrontStackTest extends AbstractTestCase
 {
     /**
-     * @var \AvtoDev\BackendToFrontendVariablesStack\Back2FrontStack
+     * @var \AvtoDev\Back2Front\Back2FrontStack
      */
     protected $service;
 

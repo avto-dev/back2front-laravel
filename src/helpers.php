@@ -1,6 +1,6 @@
 <?php
 
-use AvtoDev\BackendToFrontendVariablesStack\Back2FrontInterface;
+use AvtoDev\Back2Front\Back2FrontInterface;
 
 if (! \function_exists('backToFrontStack')) {
     /**

@@ -1,9 +1,11 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
+declare(strict_types = 1);
 
+namespace AvtoDev\Back2Front\Tests\Unit;
+
+use AvtoDev\Back2Front\Tests\AbstractTestCase;
 use Illuminate\Config\Repository as ConfigRepository;
-use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 
 /**
  * Class ServiceProviderTest.
@@ -24,7 +26,7 @@ class ServiceProviderTest extends AbstractTestCase
     {
         $configs = $this->app->make(ConfigRepository::class)->get($this->config_key);
 
-        $this->assertIsArray($configs);
+        $this->assertInternalType('array', $configs);
 
         foreach (['max_recursion_depth', 'date_format', 'stack_name'] as $item) {
             $this->assertArrayHasKey($item, $configs);
