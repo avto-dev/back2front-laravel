@@ -31,7 +31,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public static function getConfigPath(): string
     {
-        return __DIR__ . '/config/back-to-front.php';
+        return __DIR__ . '/../config/back-to-front.php';
     }
 
     /**
@@ -51,7 +51,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public static function getAssetsDirPath(): string
     {
-        return __DIR__ . '/assets';
+        return __DIR__ . '/../assets';
     }
 
     /**
@@ -61,7 +61,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function registerHelpers(): void
     {
-        require_once __DIR__ . '/helpers.php';
+        require_once __DIR__ . '/../helpers/helpers.php';
     }
 
     /**
