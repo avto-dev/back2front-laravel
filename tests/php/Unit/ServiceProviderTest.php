@@ -1,30 +1,30 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
+declare(strict_types = 1);
 
+namespace AvtoDev\Back2Front\Tests\Unit;
+
+use AvtoDev\Back2Front\Tests\AbstractTestCase;
 use Illuminate\Config\Repository as ConfigRepository;
-use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
 
 /**
- * Class StackServiceProviderTest.
- *
- * @group back-to-front
+ * @covers \AvtoDev\Back2Front\ServiceProvider<extended>
  */
-class StackServiceProviderTest extends AbstractTestCase
+class ServiceProviderTest extends AbstractTestCase
 {
     /**
-     * @var string Ключ конфига
+     * @var string
      */
     protected $config_key = 'back-to-front';
 
     /**
-     * Check config.
+     * @return void
      */
-    public function testConfigExists()
+    public function testConfigExists(): void
     {
         $configs = $this->app->make(ConfigRepository::class)->get($this->config_key);
 
-        $this->assertIsArray($configs);
+        $this->assertInternalType('array', $configs);
 
         foreach (['max_recursion_depth', 'date_format', 'stack_name'] as $item) {
             $this->assertArrayHasKey($item, $configs);

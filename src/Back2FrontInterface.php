@@ -1,13 +1,13 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Contracts;
+namespace AvtoDev\Back2Front;
 
 use Countable;
 use Traversable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
 
-interface BackendToFrontendVariablesInterface extends Arrayable, Jsonable, Traversable, Countable
+interface Back2FrontInterface extends Arrayable, Jsonable, Traversable, Countable
 {
     /**
      * Add an element to send to the front.

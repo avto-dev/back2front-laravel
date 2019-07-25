@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
+<phpunit bootstrap="./tests/php/bootstrap.php"
+         backupGlobals="false"
          backupStaticAttributes="false"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
+         forceCoversAnnotation="true"
          stopOnFailure="true">
     <testsuites>
         <testsuite name="Unit">
@@ -21,9 +23,9 @@
         </whitelist>
     </filter>
     <logging>
-        <!--log type="coverage-html" target="./coverage/html"/-->
-        <log type="coverage-xml" target="./coverage/xml"/>
-        <log type="coverage-clover" target="./coverage/clover.xml"/>
+        <!--log type="coverage-html" target="./coverage/php/html"/-->
+        <log type="coverage-xml" target="./coverage/php/xml"/>
+        <log type="coverage-clover" target="./coverage/php/clover.xml"/>
         <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
     </logging>
 </phpunit>

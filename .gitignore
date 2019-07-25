@@ -15,4 +15,7 @@ composer.lock
 /coverage
 clover-file
 package-lock.json
+yarn.json
 .DS_Store
+/*.log
+/yarn.lock

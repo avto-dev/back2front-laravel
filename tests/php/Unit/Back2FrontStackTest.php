@@ -1,44 +1,39 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
+declare(strict_types = 1);
+
+namespace AvtoDev\Back2Front\Tests\Unit;
 
 use DateTime;
 use Tarampampam\Wrappers\Json;
+use AvtoDev\Back2Front\Back2FrontInterface;
 use Illuminate\Contracts\Support\Arrayable;
-use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack;
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
- * Test service for transferring data from the back to the front.
- *
- * @coversDefaultClass \AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack
- *
- * @group back-to-front
+ * @covers \AvtoDev\Back2Front\Back2FrontStack<extended>
  */
-class BackendToFrontendVariablesServiceTest extends AbstractTestCase
+class Back2FrontStackTest extends AbstractTestCase
 {
     /**
-     * @var BackendToFrontendVariablesStack
+     * @var \AvtoDev\Back2Front\Back2FrontStack
      */
     protected $service;
 
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $this->service = $this->app->make(BackendToFrontendVariablesInterface::class);
+        $this->service = $this->app->make(Back2FrontInterface::class);
     }
 
     /**
-     * The toArray method.
-     *
-     * @covers ::toArray
+     * @return void
      */
-    public function testToArray()
+    public function testToArray(): void
     {
         $test_data = [
             0           => 123,
@@ -81,12 +76,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. An array of deep nesting.
-     *
-     * @covers ::formatDataRecursive
-     * @covers ::toArray
+     * @return void
      */
-    public function testToArrayDeepScalar()
+    public function testToArrayDeepScalar(): void
     {
         $deep_array               = [];
         $test_deep_array_scalar   = str_random();
@@ -102,12 +94,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. An object that can not be converted to an array.
-     *
-     * @covers ::clearNoScalarsFromArrayRecursive
-     * @covers ::toArray
+     * @return void
      */
-    public function testToArrayStdObject()
+    public function testToArrayStdObject(): void
     {
         $this->service->put('test_obj', new \stdClass);
 
@@ -117,12 +106,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. Format the date and time.
-     *
-     * @covers ::formatDataRecursive
-     * @covers ::toArray
+     * @return void
      */
-    public function testToArrayDateTime()
+    public function testToArrayDateTime(): void
     {
         $date_format = 'Y-m-d H:i:s';
 
@@ -136,13 +122,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. An array of deep nesting. An object that can not be converted to an array.
-     *
-     * @covers ::toArray
-     * @covers ::formatDataRecursive
-     * @covers ::clearNoScalarsFromArrayRecursive
+     * @return void
      */
-    public function testToArrayDeepStdObject()
+    public function testToArrayDeepStdObject(): void
     {
         $deep_array               = [];
         $test_deep_array_object   = new \stdClass;
@@ -158,13 +140,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. Arrayable object.
-     *
-     * @covers ::toArray
-     * @covers ::formatDataRecursive
-     * @covers ::clearNoScalarsFromArrayRecursive
+     * @return void
      */
-    public function testToArrayArrayable()
+    public function testToArrayArrayable(): void
     {
         $arrayable_mock = $this
             ->getMockBuilder(Arrayable::class)
@@ -182,13 +160,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Adding data to the stack and output to json.
-     *
-     * @covers ::put
-     * @covers ::get
-     * @covers ::toJson
+     * @return void
      */
-    public function testPutGetToJson()
+    public function testPutGetToJson(): void
     {
         $test_data[]             = [str_random(), random_int(0, 100)];
         $test_data[]             = random_int(-10, 10);
@@ -222,11 +196,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Checking the has method.
-     *
-     * @covers ::has
+     * @return void
      */
-    public function testHas()
+    public function testHas(): void
     {
         $test_key = str_random();
 
@@ -237,11 +209,9 @@ class BackendToFrontendVariablesServiceTest extends AbstractTestCase
     }
 
     /**
-     * Checking the forget method.
-     *
-     * @covers ::forget
+     * @return void
      */
-    public function testForget()
+    public function testForget(): void
     {
         $test_key = str_random();
 

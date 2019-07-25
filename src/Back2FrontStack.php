@@ -1,8 +1,8 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Service;
+namespace AvtoDev\Back2Front;
 
 use DateTime;
 use Traversable;
@@ -11,10 +11,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Config\Repository as ConfigRepository;
 use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
-use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
 
-class BackendToFrontendVariablesStack extends Collection implements BackendToFrontendVariablesInterface
+class Back2FrontStack extends Collection implements Back2FrontInterface
 {
     /**
      * Date format DateTime object conversion.
@@ -31,7 +29,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     protected $max_recursion_depth;
 
     /**
-     * BackendToFrontendVariablesStack constructor.
+     * Back2FrontStack constructor.
      *
      * @param ConfigRepository $config
      */
@@ -39,7 +37,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     {
         parent::__construct();
 
-        $config_root = StackServiceProvider::getConfigRootKeyName();
+        $config_root = ServiceProvider::getConfigRootKeyName();
 
         $this->date_format         = $config->get("{$config_root}.date_format", 'Y-m-d H:i:s');
         $this->max_recursion_depth = $config->get("{$config_root}.max_recursion_depth", 3);
@@ -47,8 +45,18 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
 
     /**
      * {@inheritdoc}
+     *
+     * @throws JsonEncodeDecodeException
      */
-    public function toArray()
+    public function toJson($options = 0): string
+    {
+        return Json::encode($this->toArray(), $options);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toArray(): array
     {
         return $this->clearNoScalarsFromArrayRecursive(
             $this->formatDataRecursive($this->items, 0, $this->max_recursion_depth)
@@ -56,13 +64,25 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
     }
 
     /**
-     * {@inheritdoc}
+     * Recompiles the array only with simple data types and arrays.
      *
-     * @throws JsonEncodeDecodeException
+     * @param mixed[] $data
+     *
+     * @return array
      */
-    public function toJson($options = 0)
+    protected function clearNoScalarsFromArrayRecursive(array $data): array
     {
-        return Json::encode($this->toArray(), $options);
+        $result = [];
+
+        foreach ($data as $key => $item) {
+            if (\is_array($item)) {
+                $result[$key] = $this->clearNoScalarsFromArrayRecursive($item);
+            } elseif (\is_scalar($item) || $item === null) {
+                $result[$key] = $item;
+            }
+        }
+
+        return $result;
     }
 
     /**
@@ -75,7 +95,7 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
      *
      * @return array
      */
-    protected function formatDataRecursive($data, $depth = 0, $max_depth = 3)
+    protected function formatDataRecursive($data, $depth = 0, $max_depth = 3): array
     {
         $map_closure = function ($value) use ($depth, $max_depth) {
             // Convert to array if available
@@ -95,27 +115,5 @@ class BackendToFrontendVariablesStack extends Collection implements BackendToFro
         };
 
         return \array_map($map_closure, (array) $data);
-    }
-
-    /**
-     * Recompiles the array only with simple data types and arrays.
-     *
-     * @param array $data
-     *
-     * @return array
-     */
-    protected function clearNoScalarsFromArrayRecursive(array $data)
-    {
-        $result = [];
-
-        foreach ($data as $key => $item) {
-            if (\is_array($item)) {
-                $result[$key] = $this->clearNoScalarsFromArrayRecursive($item);
-            } elseif (\is_scalar($item) || $item === null) {
-                $result[$key] = $item;
-            }
-        }
-
-        return $result;
     }
 }

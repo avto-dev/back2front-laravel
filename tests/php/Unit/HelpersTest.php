@@ -1,22 +1,22 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests\Unit;
+declare(strict_types = 1);
 
-use AvtoDev\BackendToFrontendVariablesStack\Tests\AbstractTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+namespace AvtoDev\Back2Front\Tests\Unit;
+
+use AvtoDev\Back2Front\Back2FrontInterface;
+use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
- * Helper test to the data transfer service from the back to the front.
- *
- * @group back-to-front
+ * @coversNothing
  */
 class HelpersTest extends AbstractTestCase
 {
     /**
-     * Check the type of object returned by the helper.
+     * @return void
      */
-    public function testBackToFrontStack()
+    public function testBackToFrontStack(): void
     {
-        $this->assertInstanceOf(BackendToFrontendVariablesInterface::class, backToFrontStack());
+        $this->assertInstanceOf(Back2FrontInterface::class, backToFrontStack());
     }
 }

@@ -8,7 +8,6 @@
 [![Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
 [![Coverage][badge_coverage]][link_coverage]
-[![Code quality][badge_code_quality]][link_code_quality]
 [![Downloads count][badge_downloads_count]][link_packagist]
 [![License][badge_license]][link_license]
 
@@ -20,22 +19,13 @@ Package a repository of the form `"key" => "value"` and methods for converting d
 
 Require this package with composer using the following command:
 
-```shell
-$ composer require avto-dev/back2front-laravel "^1.1"
+```bash
+$ composer require avto-dev/back2front-laravel "^2.0"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
 
 > You need to fix the major version of package.
-
-Laravel 5.5 and above uses Package Auto-Discovery, so doesn't require you to manually register the service-provider. Otherwise you must add the service provider to the `providers` array in `./config/app.php`:
-
-```php
-'providers' => [
-    // ...
-    AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider::class,
-]
-```
 
 If you wants to disable package service-provider auto discover, just add into your `composer.json` next lines:
 
@@ -50,12 +40,19 @@ If you wants to disable package service-provider auto discover, just add into yo
     }
 }
 ```
+
 For publish config and assets execute in console next command:
-```shell
-php artisan vendor:publish --provider="AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider"
+
+> If you already have `./config/sentry.php` file - rename it using next command:
+> ```bash
+> $ test -f ./config/back-to-front.php && mv ./config/back-to-front.php ./config/back-to-front.php.old
+> ```
+
+```bash
+$ php artisan vendor:publish --provider="AvtoDev\\Back2Front\\ServiceProvider" --force
 ```
 
-This command will publish files `config/back-to-front.php` with basic setting for package and `public/vendor/back-to-front/front-stack.js` with JavaScript object for access data.
+This command will publish files `./config/back-to-front.php` with basic setting for package and `public/vendor/back-to-front/front-stack.js` with JavaScript object for access to the data.
 
 ## Usage
 
@@ -72,15 +69,17 @@ backToFrontStack();
 or getting object from service container:
 
 ```php
-use AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface;
+<?php
 
-/** @var BackendToFrontendVariablesInterface $service */
-$service = resolve(BackendToFrontendVariablesInterface::class);
+use AvtoDev\Back2Front\Back2FrontInterface;
+
+/** @var Back2FrontInterface $service */
+$service = resolve(Back2FrontInterface::class);
 ```
 
 ##### Methods
 
-BackendToFrontendVariablesStack object provides the following public methods:
+Back2Front object provides the following public methods:
 
 Method | Description
 ------ | ------------
@@ -93,7 +92,7 @@ Method | Description
 
 Also you can iterate object.
 
-BackendToFrontendVariablesStack supports dot notation in `put`, `get`, `has` and `forget` methods.
+Back2Front supports dot notation in `put`, `get`, `has` and `forget` methods.
 
 ```php
 <?php
@@ -170,14 +169,12 @@ At frontend:
 
 ### Testing
 
-For package testing we use `phpunit` framework. Just write into your terminal:
+For package testing we use `phpunit` framework and `docker-ce` + `docker-compose` as develop environment. So, just write into your terminal after repository cloning:
 
-```shell
-$ git clone git@github.com:avto-dev/back2front-laravel.git ./back2front-laravel && cd $_
-$ composer install
-$ composer test
-$ npm install
-$ npm test
+```bash
+$ make build
+$ make latest # or 'make lowest'
+$ make test
 ```
 
 For testing JavaScript code using `Mocha` and `Chai` framework.
@@ -205,7 +202,6 @@ This is open-sourced software licensed under the [MIT License][link_license].
 [badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/back2front-laravel.svg?maxAge=180
 [badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/back2front-laravel.svg?longCache=true
 [badge_build_status]:https://travis-ci.org/avto-dev/back2front-laravel.svg?branch=master
-[badge_code_quality]:https://img.shields.io/scrutinizer/g/avto-dev/back2front-laravel.svg?maxAge=180
 [badge_coverage]:https://img.shields.io/codecov/c/github/avto-dev/back2front-laravel/master.svg?maxAge=60
 [badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/back2front-laravel.svg?maxAge=180
 [badge_license]:https://img.shields.io/packagist/l/avto-dev/back2front-laravel.svg?longCache=true
@@ -218,7 +214,6 @@ This is open-sourced software licensed under the [MIT License][link_license].
 [link_build_status]:https://travis-ci.org/avto-dev/back2front-laravel
 [link_coverage]:https://codecov.io/gh/avto-dev/back2front-laravel/
 [link_changes_log]:https://github.com/avto-dev/back2front-laravel/blob/master/CHANGELOG.md
-[link_code_quality]:https://scrutinizer-ci.com/g/avto-dev/back2front-laravel/
 [link_issues]:https://github.com/avto-dev/back2front-laravel/issues
 [link_create_issue]:https://github.com/avto-dev/back2front-laravel/issues/new/choose
 [link_commits]:https://github.com/avto-dev/back2front-laravel/commits

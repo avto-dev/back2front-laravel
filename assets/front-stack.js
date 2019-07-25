@@ -72,7 +72,7 @@
              *
              * @param custom_stack_name
              */
-            this.setStackName = function(custom_stack_name) {
+            this.setStackName = function (custom_stack_name) {
                 stack_name = custom_stack_name;
             };
 

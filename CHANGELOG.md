@@ -4,6 +4,31 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+### v2.0.0
+
+### Added
+
+- Docker-based environment for development
+- Project `Makefile`
+
+### Changed
+
+- Minimal `PHP` version now is `^7.1.3`
+- Minimal `Laravel` version now is `5.5.x`
+- Maximal `Laravel` version now is `5.8.x`
+- Dependency `laravel/framework` changed to `illuminate/*`
+- Composer scripts
+- Package scripts
+- Root namespace from `BackendToFrontendVariablesStack` to `Back2Front`
+- `\AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider` &rarr; `\AvtoDev\Back2Front\ServiceProvider`
+- `\AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack` &rarr; `\AvtoDev\Back2Front\Back2FrontStack`
+- `\AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface` &rarr; `\AvtoDev\Back2Front\Back2FrontInterface`
+- Package config, assets and helpers moved into root directory
+
+### Removed
+
+- Dev-dependency `avto-dev/dev-tools`
+
 ## v1.1.1
 
 ### Changed

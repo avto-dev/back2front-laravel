@@ -1,18 +1,30 @@
 <?php
 
-namespace AvtoDev\BackendToFrontendVariablesStack\Tests;
+declare(strict_types = 1);
 
-use Illuminate\Foundation\Application;
-use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
-use AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider;
+namespace AvtoDev\Back2Front\Tests;
 
-abstract class AbstractTestCase extends AbstractLaravelTestCase
+use AvtoDev\Back2Front\ServiceProvider;
+use Illuminate\Contracts\Console\Kernel;
+
+abstract class AbstractTestCase extends \Illuminate\Foundation\Testing\TestCase
 {
     /**
-     * {@inheritdoc}
+     * Creates the application.
+     *
+     * @param string ...$service_providers
+     *
+     * @return \Illuminate\Foundation\Application
      */
-    protected function afterApplicationBootstrapped(Application $app)
+    public function createApplication()
     {
-        $app->register(StackServiceProvider::class);
+        /** @var \Illuminate\Foundation\Application $app */
+        $app = require __DIR__ . '/../../vendor/laravel/laravel/bootstrap/app.php';
+
+        $app->make(Kernel::class)->bootstrap();
+
+        $app->register(ServiceProvider::class);
+
+        return $app;
     }
 }
