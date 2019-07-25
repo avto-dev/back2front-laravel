@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace AvtoDev\Back2Front\Tests;
 
-use Illuminate\Contracts\Console\Kernel;
 use AvtoDev\Back2Front\ServiceProvider;
+use Illuminate\Contracts\Console\Kernel;
 
 abstract class AbstractTestCase extends \Illuminate\Foundation\Testing\TestCase
 {
