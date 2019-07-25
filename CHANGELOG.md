@@ -23,7 +23,11 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 - `\AvtoDev\BackendToFrontendVariablesStack\StackServiceProvider` &rarr; `\AvtoDev\Back2Front\ServiceProvider`
 - `\AvtoDev\BackendToFrontendVariablesStack\Service\BackendToFrontendVariablesStack` &rarr; `\AvtoDev\Back2Front\Back2FrontStack`
 - `\AvtoDev\BackendToFrontendVariablesStack\Contracts\BackendToFrontendVariablesInterface` &rarr; `\AvtoDev\Back2Front\Back2FrontInterface`
-- Assets, config and helpers moved into root directory
+- Package config, assets and helpers moved into root directory
+
+### Removed
+
+- Dev-dependency `avto-dev/dev-tools`
 
 ## v1.1.1
 

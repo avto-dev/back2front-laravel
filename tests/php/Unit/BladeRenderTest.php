@@ -9,6 +9,9 @@ use AvtoDev\Back2Front\Tests\AbstractTestCase;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
+/**
+ * @covers \AvtoDev\Back2Front\ServiceProvider<extended>
+ */
 class BladeRenderTest extends AbstractTestCase
 {
     /**
@@ -22,8 +25,6 @@ class BladeRenderTest extends AbstractTestCase
     }
 
     /**
-     * Rendering test.
-     *
      * @return void
      */
     public function testRendering(): void
@@ -58,8 +59,6 @@ class BladeRenderTest extends AbstractTestCase
     }
 
     /**
-     * Rendering test.
-     *
      * @return void
      */
     public function testRenderCaching(): void

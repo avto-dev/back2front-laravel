@@ -21,10 +21,8 @@
     },
     "require-dev": {
         "laravel/laravel": ">=5.5.0 <5.9.0",
-        "mockery/mockery": "0.9.*",
-        "symfony/var-dumper": "~3.2 || ^4.0",
-        "avto-dev/dev-tools": "^1.7",
         "phpstan/phpstan": "^0.11.3",
+        "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^6.4 || ~7.5"
     },
     "autoload": {

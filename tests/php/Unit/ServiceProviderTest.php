@@ -8,19 +8,17 @@ use AvtoDev\Back2Front\Tests\AbstractTestCase;
 use Illuminate\Config\Repository as ConfigRepository;
 
 /**
- * Class ServiceProviderTest.
- *
- * @group back-to-front
+ * @covers \AvtoDev\Back2Front\ServiceProvider<extended>
  */
 class ServiceProviderTest extends AbstractTestCase
 {
     /**
-     * @var string Ключ конфига
+     * @var string
      */
     protected $config_key = 'back-to-front';
 
     /**
-     * Check config.
+     * @return void
      */
     public function testConfigExists(): void
     {

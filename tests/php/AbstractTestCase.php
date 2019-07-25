@@ -4,17 +4,27 @@ declare(strict_types = 1);
 
 namespace AvtoDev\Back2Front\Tests;
 
-use Illuminate\Foundation\Application;
+use Illuminate\Contracts\Console\Kernel;
 use AvtoDev\Back2Front\ServiceProvider;
-use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
 
-abstract class AbstractTestCase extends AbstractLaravelTestCase
+abstract class AbstractTestCase extends \Illuminate\Foundation\Testing\TestCase
 {
     /**
-     * {@inheritdoc}
+     * Creates the application.
+     *
+     * @param string ...$service_providers
+     *
+     * @return \Illuminate\Foundation\Application
      */
-    protected function afterApplicationBootstrapped(Application $app)
+    public function createApplication()
     {
+        /** @var \Illuminate\Foundation\Application $app */
+        $app = require __DIR__ . '/../../vendor/laravel/laravel/bootstrap/app.php';
+
+        $app->make(Kernel::class)->bootstrap();
+
         $app->register(ServiceProvider::class);
+
+        return $app;
     }
 }

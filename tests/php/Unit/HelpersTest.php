@@ -8,14 +8,12 @@ use AvtoDev\Back2Front\Back2FrontInterface;
 use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
- * Helper test to the data transfer service from the back to the front.
- *
- * @group back-to-front
+ * @coversNothing
  */
 class HelpersTest extends AbstractTestCase
 {
     /**
-     * Check the type of object returned by the helper.
+     * @return void
      */
     public function testBackToFrontStack(): void
     {

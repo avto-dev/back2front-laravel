@@ -43,11 +43,16 @@ If you wants to disable package service-provider auto discover, just add into yo
 
 For publish config and assets execute in console next command:
 
+> If you already have `./config/sentry.php` file - rename it using next command:
+> ```bash
+> $ test -f ./config/back-to-front.php && mv ./config/back-to-front.php ./config/back-to-front.php.old
+> ```
+
 ```bash
-$ php artisan vendor:publish --provider="Back2FrontStack"
+$ php artisan vendor:publish --provider="AvtoDev\\Back2Front\\ServiceProvider" --force
 ```
 
-This command will publish files `config/back-to-front.php` with basic setting for package and `public/vendor/back-to-front/front-stack.js` with JavaScript object for access data.
+This command will publish files `./config/back-to-front.php` with basic setting for package and `public/vendor/back-to-front/front-stack.js` with JavaScript object for access to the data.
 
 ## Usage
 
@@ -64,10 +69,12 @@ backToFrontStack();
 or getting object from service container:
 
 ```php
-use AvtoDev\Back2Front\BackendToFrontendVariablesInterface;
+<?php
 
-/** @var BackendToFrontendVariablesInterface $service */
-$service = resolve(BackendToFrontendVariablesInterface::class);
+use AvtoDev\Back2Front\Back2FrontInterface;
+
+/** @var Back2FrontInterface $service */
+$service = resolve(Back2FrontInterface::class);
 ```
 
 ##### Methods

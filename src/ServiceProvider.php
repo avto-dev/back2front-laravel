@@ -122,7 +122,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                                     window, "%s", 
                                     {
                                         writable: false, 
-                                        value:  \', resolve( \'%s\' )->toJson() , \' 
+                                        value:  \', \Illuminate\Container\Container::getInstance()->make(\'%s\')->toJson() , \' 
                                     }
                                 );
                             </script>\'; ?>',

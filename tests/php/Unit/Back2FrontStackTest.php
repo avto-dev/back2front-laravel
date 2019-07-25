@@ -11,11 +11,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
- * Test service for transferring data from the back to the front.
- *
- * @coversDefaultClass \AvtoDev\Back2Front\Back2FrontStack
- *
- * @group back-to-front
+ * @covers \AvtoDev\Back2Front\Back2FrontStack<extended>
  */
 class Back2FrontStackTest extends AbstractTestCase
 {
@@ -35,9 +31,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method.
-     *
-     * @covers ::toArray
+     * @return void
      */
     public function testToArray(): void
     {
@@ -82,10 +76,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. An array of deep nesting.
-     *
-     * @covers ::formatDataRecursive
-     * @covers ::toArray
+     * @return void
      */
     public function testToArrayDeepScalar(): void
     {
@@ -103,10 +94,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. An object that can not be converted to an array.
-     *
-     * @covers ::clearNoScalarsFromArrayRecursive
-     * @covers ::toArray
+     * @return void
      */
     public function testToArrayStdObject(): void
     {
@@ -118,10 +106,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. Format the date and time.
-     *
-     * @covers ::formatDataRecursive
-     * @covers ::toArray
+     * @return void
      */
     public function testToArrayDateTime(): void
     {
@@ -137,11 +122,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. An array of deep nesting. An object that can not be converted to an array.
-     *
-     * @covers ::toArray
-     * @covers ::formatDataRecursive
-     * @covers ::clearNoScalarsFromArrayRecursive
+     * @return void
      */
     public function testToArrayDeepStdObject(): void
     {
@@ -159,11 +140,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * The toArray method. Arrayable object.
-     *
-     * @covers ::toArray
-     * @covers ::formatDataRecursive
-     * @covers ::clearNoScalarsFromArrayRecursive
+     * @return void
      */
     public function testToArrayArrayable(): void
     {
@@ -183,11 +160,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * Adding data to the stack and output to json.
-     *
-     * @covers ::put
-     * @covers ::get
-     * @covers ::toJson
+     * @return void
      */
     public function testPutGetToJson(): void
     {
@@ -223,9 +196,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * Checking the has method.
-     *
-     * @covers ::has
+     * @return void
      */
     public function testHas(): void
     {
@@ -238,9 +209,7 @@ class Back2FrontStackTest extends AbstractTestCase
     }
 
     /**
-     * Checking the forget method.
-     *
-     * @covers ::forget
+     * @return void
      */
     public function testForget(): void
     {

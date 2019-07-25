@@ -8,7 +8,7 @@ if (! \function_exists('backToFrontStack')) {
      *
      * @return Back2FrontInterface
      */
-    function backToFrontStack()
+    function backToFrontStack(): Back2FrontInterface
     {
         return \Illuminate\Container\Container::getInstance()->make(Back2FrontInterface::class);
     }
