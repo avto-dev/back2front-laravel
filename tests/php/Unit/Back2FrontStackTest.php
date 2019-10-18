@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace AvtoDev\Back2Front\Tests\Unit;
 
 use DateTime;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Tarampampam\Wrappers\Json;
 use AvtoDev\Back2Front\Back2FrontInterface;
 use Illuminate\Contracts\Support\Arrayable;
@@ -81,16 +83,16 @@ class Back2FrontStackTest extends AbstractTestCase
     public function testToArrayDeepScalar(): void
     {
         $deep_array               = [];
-        $test_deep_array_scalar   = str_random();
+        $test_deep_array_scalar   = Str::random();
         $test_deep_array_key_path = '0.test.1.4.A.#test.88';
 
-        array_set($deep_array, $test_deep_array_key_path, $test_deep_array_scalar);
+        Arr::set($deep_array, $test_deep_array_key_path, $test_deep_array_scalar);
 
         $this->service->put('test_deep', $deep_array);
 
         $result = $this->service->toArray();
 
-        $this->assertEquals($test_deep_array_scalar, array_get($result, 'test_deep.' . $test_deep_array_key_path));
+        $this->assertEquals($test_deep_array_scalar, Arr::get($result, 'test_deep.' . $test_deep_array_key_path));
     }
 
     /**
@@ -102,7 +104,7 @@ class Back2FrontStackTest extends AbstractTestCase
 
         $result = $this->service->toArray();
 
-        $this->assertNull(array_get($result, 'test_obj'));
+        $this->assertNull(Arr::get($result, 'test_obj'));
     }
 
     /**
@@ -130,13 +132,13 @@ class Back2FrontStackTest extends AbstractTestCase
         $test_deep_array_object   = new \stdClass;
         $test_deep_array_key_path = '0.test.1.4.A.#test.88';
 
-        array_set($deep_array, $test_deep_array_key_path, $test_deep_array_object);
+        Arr::set($deep_array, $test_deep_array_key_path, $test_deep_array_object);
 
         $this->service->put('test_deep', $deep_array);
 
         $result = $this->service->toArray();
 
-        $this->assertNull(array_get($result, 'test_deep.' . $test_deep_array_key_path));
+        $this->assertNull(Arr::get($result, 'test_deep.' . $test_deep_array_key_path));
     }
 
     /**
@@ -156,7 +158,7 @@ class Back2FrontStackTest extends AbstractTestCase
 
         $result = $this->service->toArray();
 
-        $this->assertEquals([1, 2, 3], array_get($result, 'test_arrayable'));
+        $this->assertEquals([1, 2, 3], Arr::get($result, 'test_arrayable'));
     }
 
     /**
@@ -164,11 +166,11 @@ class Back2FrontStackTest extends AbstractTestCase
      */
     public function testPutGetToJson(): void
     {
-        $test_data[]             = [str_random(), random_int(0, 100)];
+        $test_data[]             = [Str::random(), random_int(0, 100)];
         $test_data[]             = random_int(-10, 10);
         $test_data[]             = null;
-        $test_data[str_random()] = str_random();
-        $test_data[-10]          = str_random();
+        $test_data[Str::random()] = Str::random();
+        $test_data[-10]          = Str::random();
         $test_data['collection'] = collect([1]);
 
         foreach ($test_data as $key => $value) {
@@ -200,12 +202,12 @@ class Back2FrontStackTest extends AbstractTestCase
      */
     public function testHas(): void
     {
-        $test_key = str_random();
+        $test_key = Str::random();
 
         $this->service->put($test_key, 1);
 
         $this->assertTrue($this->service->has($test_key));
-        $this->assertFalse($this->service->has(str_random()));
+        $this->assertFalse($this->service->has(Str::random()));
     }
 
     /**
@@ -213,7 +215,7 @@ class Back2FrontStackTest extends AbstractTestCase
      */
     public function testForget(): void
     {
-        $test_key = str_random();
+        $test_key = Str::random();
 
         $this->service->put($test_key, 1);
 
