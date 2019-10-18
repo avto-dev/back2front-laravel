@@ -166,12 +166,12 @@ class Back2FrontStackTest extends AbstractTestCase
      */
     public function testPutGetToJson(): void
     {
-        $test_data[]             = [Str::random(), random_int(0, 100)];
-        $test_data[]             = random_int(-10, 10);
-        $test_data[]             = null;
+        $test_data[]              = [Str::random(), random_int(0, 100)];
+        $test_data[]              = random_int(-10, 10);
+        $test_data[]              = null;
         $test_data[Str::random()] = Str::random();
-        $test_data[-10]          = Str::random();
-        $test_data['collection'] = collect([1]);
+        $test_data[-10]           = Str::random();
+        $test_data['collection']  = collect([1]);
 
         foreach ($test_data as $key => $value) {
             $this->service->put($key, $value);
