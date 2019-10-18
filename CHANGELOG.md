@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ## Unreleased
 
-### Added
+### Changed
 
-- Added support laravel/framework ^6.0
+- Maximal `illuminate/*` packages version now is `6.*`
 
 ## v2.0.0
 
