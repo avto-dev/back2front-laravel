@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 - Maximal `illuminate/*` packages version now is `6.*`
 
+### Added
+
+- GitHub actions for a tests running
+
 ## v2.0.0
 
 ### Added
