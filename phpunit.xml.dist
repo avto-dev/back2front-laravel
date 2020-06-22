@@ -10,7 +10,7 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          forceCoversAnnotation="true"
-         stopOnFailure="true">
+         stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/php</directory>

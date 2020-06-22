@@ -15,16 +15,6 @@ use Illuminate\Contracts\Config\Repository as ConfigRepository;
 class BladeRenderTest extends AbstractTestCase
 {
     /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->artisan('view:clear');
-    }
-
-    /**
      * @return void
      */
     public function testRendering(): void

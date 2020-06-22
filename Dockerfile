@@ -4,13 +4,13 @@ ENV \
     COMPOSER_ALLOW_SUPERUSER="1" \
     COMPOSER_HOME="/tmp/composer"
 
-COPY --from=composer:1.8.6 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1.10.7 /usr/bin/composer /usr/bin/composer
 
-RUN set -xe \
-    && apk add --no-cache binutils git curl \
-    && apk add --no-cache --virtual .build-deps autoconf pkgconf make g++ gcc \
+RUN set -x \
+    && apk add --no-cache binutils git \
+    && apk add --no-cache --virtual .build-deps autoconf pkgconf make g++ gcc 1>/dev/null \
     # install xdebug (for testing with code coverage), but not enable it
-    && pecl install xdebug-2.9.1 \
+    && pecl install xdebug-2.9.1 1>/dev/null \
     && apk del .build-deps \
     && mkdir /src ${COMPOSER_HOME} \
     && composer global require 'hirak/prestissimo' --no-interaction --no-suggest --prefer-dist \
