@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="./tests/php/bootstrap.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          backupGlobals="false"
          backupStaticAttributes="false"
+         bootstrap="./tests/php/bootstrap.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
          forceCoversAnnotation="true"
-         stopOnFailure="true">
+         stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/php</directory>

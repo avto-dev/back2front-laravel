@@ -5,7 +5,7 @@
 # Send backend data to frontend for Laravel applications
 
 [![Version][badge_packagist_version]][link_packagist]
-[![Version][badge_php_version]][link_packagist]
+[![PHP Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
 [![Coverage][badge_coverage]][link_coverage]
 [![Downloads count][badge_downloads_count]][link_packagist]
@@ -27,32 +27,13 @@ $ composer require avto-dev/back2front-laravel "^2.0"
 
 > You need to fix the major version of package.
 
-If you wants to disable package service-provider auto discover, just add into your `composer.json` next lines:
-
-```json
-{
-    "extra": {
-        "laravel": {
-            "dont-discover": [
-                "avto-dev/back2front-laravel"
-            ]
-        }
-    }
-}
-```
-
 For publish config and assets execute in console next command:
-
-> If you already have `./config/sentry.php` file - rename it using next command:
-> ```bash
-> $ test -f ./config/back-to-front.php && mv ./config/back-to-front.php ./config/back-to-front.php.old
-> ```
 
 ```bash
 $ php artisan vendor:publish --provider="AvtoDev\\Back2Front\\ServiceProvider" --force
 ```
 
-This command will publish files `./config/back-to-front.php` with basic setting for package and `public/vendor/back-to-front/front-stack.js` with JavaScript object for access to the data.
+This command will publish files `./config/back-to-front.php` with basic setting for package and `public/vendor/back-to-front/front-stack.js` with JavaScript object for getting access to the data.
 
 ## Usage
 
@@ -143,7 +124,7 @@ Use it you may adding js file at page:
 
 > **You also can use it as require.js dependency.**
 
-This creates window.frontStack object which provides following methods:
+This creates `window.frontStack` object which provides following methods:
 
 Method | Description
 ------ | -----------
@@ -201,7 +182,7 @@ This is open-sourced software licensed under the [MIT License][link_license].
 
 [badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/back2front-laravel.svg?maxAge=180
 [badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/back2front-laravel.svg?longCache=true
-[badge_build_status]:https://travis-ci.org/avto-dev/back2front-laravel.svg?branch=master
+[badge_build_status]:https://img.shields.io/github/workflow/status/avto-dev/back2front-laravel/tests/master
 [badge_coverage]:https://img.shields.io/codecov/c/github/avto-dev/back2front-laravel/master.svg?maxAge=60
 [badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/back2front-laravel.svg?maxAge=180
 [badge_license]:https://img.shields.io/packagist/l/avto-dev/back2front-laravel.svg?longCache=true
