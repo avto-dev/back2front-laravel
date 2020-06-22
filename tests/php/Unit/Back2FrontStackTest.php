@@ -4,13 +4,13 @@ declare(strict_types = 1);
 
 namespace AvtoDev\Back2Front\Tests\Unit;
 
-use AvtoDev\Back2Front\Back2FrontInterface;
-use AvtoDev\Back2Front\Tests\AbstractTestCase;
 use DateTime;
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Tarampampam\Wrappers\Json;
+use AvtoDev\Back2Front\Back2FrontInterface;
+use Illuminate\Contracts\Support\Arrayable;
+use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
  * @covers \AvtoDev\Back2Front\Back2FrontStack<extended>

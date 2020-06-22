@@ -6,8 +6,8 @@ namespace AvtoDev\Back2Front\Tests\Unit;
 
 use AvtoDev\Back2Front\Back2FrontInterface;
 use AvtoDev\Back2Front\Tests\AbstractTestCase;
-use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 /**
  * @covers \AvtoDev\Back2Front\ServiceProvider<extended>
