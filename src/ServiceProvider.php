@@ -119,10 +119,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 return \sprintf(
                     '<?php echo \'<script type="text/javascript">
                                 Object.defineProperty(
-                                    window, "%s", 
+                                    window, "%s",
                                     {
-                                        writable: false, 
-                                        value:  \', \Illuminate\Container\Container::getInstance()->make(\'%s\')->toJson() , \' 
+                                        writable: false,
+                                        value:  \', \Illuminate\Container\Container::getInstance()->make(\'%s\')->toJson() , \'
                                     }
                                 );
                             </script>\'; ?>',
