@@ -1,9 +1,5 @@
 version: '3.2'
 
-networks:
-  app-network:
-    driver: bridge
-
 volumes:
   composer-data:
 
@@ -17,11 +13,9 @@ services:
       - /etc/group:/etc/group:ro
       - .:/src:cached
       - composer-data:/tmp/composer:cached
-    networks:
-      - app-network
 
   node:
-    image: tarampampam/node:12-alpine
+    image: node:12-alpine
     environment:
       HOME: /tmp
     volumes:
@@ -29,5 +23,3 @@ services:
       - /etc/group:/etc/group:ro
       - .:/src:cached
     working_dir: /src
-    networks:
-      - app-network

@@ -7,6 +7,9 @@ use Traversable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
 
+/**
+ * @extends Traversable<string, mixed>
+ */
 interface Back2FrontInterface extends Arrayable, Jsonable, Traversable, Countable
 {
     /**
@@ -22,7 +25,7 @@ interface Back2FrontInterface extends Arrayable, Jsonable, Traversable, Countabl
     /**
      * Remove an item by key.
      *
-     * @param array|string $keys
+     * @param array<string>|string $keys
      *
      * @return self|mixed
      */

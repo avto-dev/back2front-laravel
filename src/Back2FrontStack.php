@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace AvtoDev\Back2Front;
 
 use DateTime;
-use Traversable;
 use Tarampampam\Wrappers\Json;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Arrayable;
@@ -39,8 +38,8 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
 
         $config_root = ServiceProvider::getConfigRootKeyName();
 
-        $this->date_format         = $config->get("{$config_root}.date_format", 'Y-m-d H:i:s');
-        $this->max_recursion_depth = $config->get("{$config_root}.max_recursion_depth", 3);
+        $this->date_format         = (string) $config->get("{$config_root}.date_format", 'Y-m-d H:i:s');
+        $this->max_recursion_depth = (int) $config->get("{$config_root}.max_recursion_depth", 3);
     }
 
     /**
@@ -54,7 +53,7 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {
@@ -68,7 +67,7 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
      *
      * @param mixed[] $data
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function clearNoScalarsFromArrayRecursive(array $data): array
     {
@@ -89,11 +88,11 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
      * Performs a recursive data traversal to the maximum specified level of nesting and converts the values to
      *  * Arrays + formats the date.
      *
-     * @param array|Traversable $data      Данные
-     * @param int               $depth     Текущая глубина обхода
-     * @param int               $max_depth Максимальная глубина обхода
+     * @param iterable<mixed> $data      Данные
+     * @param int             $depth     Текущая глубина обхода
+     * @param int             $max_depth Максимальная глубина обхода
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function formatDataRecursive($data, $depth = 0, $max_depth = 3): array
     {
@@ -107,7 +106,7 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
                 return $value->format($this->date_format);
             }
 
-            if ((\is_array($value) || $value instanceof Traversable) && $depth < $max_depth) {
+            if (\is_iterable($value) && $depth < $max_depth) {
                 return $this->formatDataRecursive($value, ++$depth, $max_depth);
             }
 
