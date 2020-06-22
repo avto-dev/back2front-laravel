@@ -5,12 +5,12 @@ declare(strict_types = 1);
 namespace AvtoDev\Back2Front;
 
 use DateTime;
-use Traversable;
-use Tarampampam\Wrappers\Json;
-use Illuminate\Support\Collection;
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Config\Repository as ConfigRepository;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
 use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
+use Tarampampam\Wrappers\Json;
+use Traversable;
 
 class Back2FrontStack extends Collection implements Back2FrontInterface
 {

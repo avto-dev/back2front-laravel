@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace AvtoDev\Back2Front;
 
+use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
-use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {

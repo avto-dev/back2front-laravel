@@ -3,9 +3,9 @@
 namespace AvtoDev\Back2Front;
 
 use Countable;
-use Traversable;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+use Traversable;
 
 interface Back2FrontInterface extends Arrayable, Jsonable, Traversable, Countable
 {
