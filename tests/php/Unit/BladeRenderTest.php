@@ -43,8 +43,8 @@ class BladeRenderTest extends AbstractTestCase
         $this->assertRegExp("~window,\s?['\"]{$config->get('back-to-front.stack_name')}['\"],~", $rendered);
 
         foreach ($data as $key => $value) {
-            $this->assertContains((string) $key, $rendered);
-            $this->assertContains((string) $value, $rendered);
+            $this->assertStringContainsString((string) $key, $rendered);
+            $this->assertStringContainsString((string) $value, $rendered);
         }
     }
 
@@ -65,7 +65,7 @@ class BladeRenderTest extends AbstractTestCase
 
         $rendered = $view->make('stubs::view')->render();
 
-        $this->assertContains('foo', $rendered);
+        $this->assertStringContainsString('foo', $rendered);
 
         // Set another state
         $service->put('test_key', 'bar2');
@@ -74,7 +74,7 @@ class BladeRenderTest extends AbstractTestCase
         $rendered2 = $view->make('stubs::view')->render();
 
         // See actual data
-        $this->assertNotContains('foo', $rendered2);
-        $this->assertContains('test_key', $rendered2);
+        $this->assertStringNotContainsString('foo', $rendered2);
+        $this->assertStringContainsString('test_key', $rendered2);
     }
 }

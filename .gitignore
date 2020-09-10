@@ -1,8 +1,9 @@
-# Composer lock file
+# Lock files
 composer.lock
+yarn.lock
 
 # IDEs
-/nbproject
+/.vscode
 /.idea
 
 # Vendors
@@ -18,4 +19,4 @@ package-lock.json
 yarn.json
 .DS_Store
 /*.log
-/yarn.lock
+*.cache
