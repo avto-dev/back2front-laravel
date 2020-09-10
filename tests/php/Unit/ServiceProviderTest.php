@@ -24,7 +24,7 @@ class ServiceProviderTest extends AbstractTestCase
     {
         $configs = $this->app->make(ConfigRepository::class)->get($this->config_key);
 
-        $this->assertInternalType('array', $configs);
+        $this->assertIsArray($configs);
 
         foreach (['max_recursion_depth', 'date_format', 'stack_name'] as $item) {
             $this->assertArrayHasKey($item, $configs);
