@@ -20,19 +20,19 @@ install-js: ## Install JS dependencies
 	docker-compose run $(RUN_ARGS) node yarn install
 
 latest: clean install-js ## Install latest php dependencies
-	docker-compose run $(RUN_ARGS) app composer update -n --ansi --no-suggest --prefer-dist --prefer-stable
+	docker-compose run $(RUN_ARGS) app composer update -n --ansi --prefer-dist --prefer-stable
 
 install: clean install-js ## Install regular php dependencies
-	docker-compose run $(RUN_ARGS) app composer update -n --prefer-dist --no-interaction --no-suggest
+	docker-compose run $(RUN_ARGS) app composer update -n --prefer-dist --no-interaction
 
 lowest: clean install-js ## Install lowest php dependencies
-	docker-compose run $(RUN_ARGS) app composer update -n --ansi --no-suggest --prefer-dist --prefer-lowest
+	docker-compose run $(RUN_ARGS) app composer update -n --ansi --prefer-dist --prefer-lowest
 
 test-php: ## Execute php tests and linters
 	docker-compose run $(RUN_ARGS) app composer test
 
 test-php-cover: ## Execute php tests with coverage
-	docker-compose run --rm --user "0:0" app sh -c 'docker-php-ext-enable xdebug && su $(shell whoami) -s /bin/sh -c "composer phpunit-cover"'
+	docker-compose run --rm --user "0:0" -e 'XDEBUG_MODE=coverage' app sh -c 'docker-php-ext-enable xdebug && su $(shell whoami) -s /bin/sh -c "composer phpunit-cover"'
 
 test-js: ## Execute JS tests
 	docker-compose run $(RUN_ARGS) node yarn test
