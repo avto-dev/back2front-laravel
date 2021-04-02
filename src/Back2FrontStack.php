@@ -5,11 +5,9 @@ declare(strict_types = 1);
 namespace AvtoDev\Back2Front;
 
 use DateTime;
-use Tarampampam\Wrappers\Json;
 use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Config\Repository as ConfigRepository;
-use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
 
 class Back2FrontStack extends Collection implements Back2FrontInterface
 {
@@ -45,11 +43,15 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
     /**
      * {@inheritdoc}
      *
-     * @throws JsonEncodeDecodeException
+     * @throws \Exception
      */
     public function toJson($options = 0): string
     {
-        return Json::encode($this->toArray(), $options);
+        $json = \json_encode($this->toArray(), $options);
+        if (\is_string($json)) {
+            return $json;
+        }
+        throw new \Exception('Invalid or malformed JSON');
     }
 
     /**
