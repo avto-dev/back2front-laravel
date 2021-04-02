@@ -43,15 +43,11 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
     /**
      * {@inheritdoc}
      *
-     * @throws \Exception
+     * @throws \JsonException
      */
     public function toJson($options = 0): string
     {
-        $json = \json_encode($this->toArray(), $options);
-        if (\is_string($json)) {
-            return $json;
-        }
-        throw new \Exception('Invalid or malformed JSON');
+        return \json_encode($this->toArray(), $options | \JSON_THROW_ON_ERROR);
     }
 
     /**
