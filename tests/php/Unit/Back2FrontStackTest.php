@@ -7,7 +7,6 @@ namespace AvtoDev\Back2Front\Tests\Unit;
 use DateTime;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Tarampampam\Wrappers\Json;
 use AvtoDev\Back2Front\Back2FrontInterface;
 use Illuminate\Contracts\Support\Arrayable;
 use AvtoDev\Back2Front\Tests\AbstractTestCase;
@@ -179,7 +178,7 @@ class Back2FrontStackTest extends AbstractTestCase
 
         $in_array = $this->service->toArray();
 
-        $parsed_data = Json::decode($this->service->toJson(), true);
+        $parsed_data = \json_decode($this->service->toJson(), true);
 
         // Verifying that the array received through toArray contains the same data that was returned to toJson
         $this->assertEquals($in_array, $parsed_data);
@@ -192,7 +191,7 @@ class Back2FrontStackTest extends AbstractTestCase
             if (is_scalar($value)) {
                 $this->assertEquals($value, $parsed_data[$key]);
             } else {
-                $this->assertEquals(Json::decode(Json::encode($value), true), $parsed_data[$key]);
+                $this->assertEquals(\json_decode((string) \json_encode($value), true), $parsed_data[$key]);
             }
         }
     }

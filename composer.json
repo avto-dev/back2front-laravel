@@ -17,11 +17,11 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "ext-mbstring": "*",
+        "ext-json": "*",
         "illuminate/support": "~6.0 || ~7.0 || ~8.0",
         "illuminate/view": "~6.0 || ~7.0 || ~8.0",
         "illuminate/container": "~6.0 || ~7.0 || ~8.0",
-        "illuminate/config": "~6.0 || ~7.0 || ~8.0",
-        "tarampampam/wrappers-php": "^1.3 || ~2.0"
+        "illuminate/config": "~6.0 || ~7.0 || ~8.0"
     },
     "require-dev": {
         "laravel/laravel": "~6.0 || ~7.0 || ~8.0",
