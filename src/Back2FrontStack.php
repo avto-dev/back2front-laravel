@@ -47,7 +47,7 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
      */
     public function toJson($options = 0): string
     {
-        return \json_encode($this->toArray(), $options | \JSON_THROW_ON_ERROR);
+        return (string) \json_encode($this->toArray(), $options | \JSON_THROW_ON_ERROR);
     }
 
     /**
