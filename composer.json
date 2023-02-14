@@ -15,19 +15,19 @@
         }
     ],
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^8.0",
         "ext-mbstring": "*",
         "ext-json": "*",
-        "illuminate/support": "~6.0 || ~7.0 || ~8.0",
-        "illuminate/view": "~6.0 || ~7.0 || ~8.0",
-        "illuminate/container": "~6.0 || ~7.0 || ~8.0",
-        "illuminate/config": "~6.0 || ~7.0 || ~8.0"
+        "illuminate/support": "~9.0",
+        "illuminate/view": "~9.0",
+        "illuminate/container": "~9.0",
+        "illuminate/config": "~9.0"
     },
     "require-dev": {
-        "laravel/laravel": "~6.0 || ~7.0 || ~8.0",
-        "phpstan/phpstan": "~0.12.36",
-        "mockery/mockery": "^1.4",
-        "phpunit/phpunit": "^8.5.4 || ^9.3"
+        "laravel/laravel": "~9.0",
+        "phpstan/phpstan": "~1.9",
+        "mockery/mockery": "^1.5.1",
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {

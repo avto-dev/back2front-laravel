@@ -34,10 +34,11 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
     {
         parent::__construct();
 
-        $config_root = ServiceProvider::getConfigRootKeyName();
+        /** @var array{date_format: string|null,max_recursion_depth: int|null, stack_name: string|null} $values */
+        $values = $config->get(ServiceProvider::getConfigRootKeyName());
 
-        $this->date_format         = (string) $config->get("{$config_root}.date_format", 'Y-m-d H:i:s');
-        $this->max_recursion_depth = (int) $config->get("{$config_root}.max_recursion_depth", 3);
+        $this->date_format         = $values['date_format'] ?? 'Y-m-d H:i:s';
+        $this->max_recursion_depth = $values['max_recursion_depth'] ?? 3;
     }
 
     /**

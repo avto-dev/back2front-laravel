@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
-         backupStaticAttributes="false"
          bootstrap="./tests/php/bootstrap.php"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         forceCoversAnnotation="true"
-         stopOnFailure="false">
+         forceCoversAnnotation="true">
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+        <exclude>
+            <directory>./vendor</directory>
+        </exclude>
+        <report>
+            <clover outputFile="./coverage/php/clover.xml"/>
+            <text outputFile="php://stdout"/>
+            <xml outputDirectory="./coverage/php/xml"/>
+        </report>
+    </coverage>
     <testsuites>
         <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/php</directory>
+            <directory>./tests/php</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-            <exclude>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
-    <logging>
-        <!--log type="coverage-html" target="./coverage/php/html"/-->
-        <log type="coverage-xml" target="./coverage/php/xml"/>
-        <log type="coverage-clover" target="./coverage/php/clover.xml"/>
-        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
-    </logging>
 </phpunit>

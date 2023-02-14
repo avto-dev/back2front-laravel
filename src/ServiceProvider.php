@@ -112,9 +112,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 /** @var ConfigRepository $config */
                 $config = $this->app->make(ConfigRepository::class);
 
-                $stack_name = Str::slug((\is_string($stack_name) && $stack_name !== '')
+                /** @var string $stack_name */
+                $stack_name = (\is_string($stack_name) && $stack_name !== '')
                     ? $stack_name
-                    : $config->get(static::getConfigRootKeyName() . '.stack_name'));
+                    : $config->get(static::getConfigRootKeyName() . '.stack_name');
+
+                $stack_name = Str::slug($stack_name);
 
                 return \sprintf(
                     '<?php echo \'<script type="text/javascript">
