@@ -40,7 +40,7 @@ class BladeRenderTest extends AbstractTestCase
 
         $rendered = $view->make('stubs::view')->render();
 
-        $this->assertRegExp("~window,\s?['\"]{$config->get('back-to-front.stack_name')}['\"],~", $rendered);
+        $this->assertMatchesRegularExpression("~window,\s?['\"]{$config->get('back-to-front.stack_name')}['\"],~", $rendered);
 
         foreach ($data as $key => $value) {
             $this->assertStringContainsString((string) $key, $rendered);
