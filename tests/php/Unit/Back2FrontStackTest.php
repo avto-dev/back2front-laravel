@@ -12,7 +12,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use AvtoDev\Back2Front\Tests\AbstractTestCase;
 
 /**
- * @covers \AvtoDev\Back2Front\Back2FrontStack<extended>
+ * @covers \AvtoDev\Back2Front\Back2FrontStack
  */
 class Back2FrontStackTest extends AbstractTestCase
 {

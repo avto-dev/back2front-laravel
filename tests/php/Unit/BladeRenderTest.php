@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 
 /**
- * @covers \AvtoDev\Back2Front\ServiceProvider<extended>
+ * @covers \AvtoDev\Back2Front\ServiceProvider
  */
 class BladeRenderTest extends AbstractTestCase
 {

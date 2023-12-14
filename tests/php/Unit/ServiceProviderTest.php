@@ -8,7 +8,7 @@ use AvtoDev\Back2Front\Tests\AbstractTestCase;
 use Illuminate\Config\Repository as ConfigRepository;
 
 /**
- * @covers \AvtoDev\Back2Front\ServiceProvider<extended>
+ * @covers \AvtoDev\Back2Front\ServiceProvider
  */
 class ServiceProviderTest extends AbstractTestCase
 {
