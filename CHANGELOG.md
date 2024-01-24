@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 - Minimal `phpstan/phpstan` version now is `1.10`
 - Minimal `mockery/mockery` version now is `1.6`
 - Minimal `phpunit/phpunit` version now is `10.5`
-- Version of `composer` in docker container updated up to `2.6.5`
+- Version of `composer` in docker container updated up to `2.6.6`
 
 ## v2.6.0
 
