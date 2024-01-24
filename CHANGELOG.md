@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## Unreleased
+
+### Changed
+
+- Minimal PHP version now is `8.1`
+- Minimal Laravel version now is `10.0`
+- Minimal `phpstan/phpstan` version now is `1.10`
+- Minimal `mockery/mockery` version now is `1.6`
+- Minimal `phpunit/phpunit` version now is `10.5`
+- Version of `composer` in docker container updated up to `2.6.6`
+
 ## v2.6.0
 
 ### Changed
