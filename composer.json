@@ -18,15 +18,15 @@
         "php": "^8.1",
         "ext-mbstring": "*",
         "ext-json": "*",
-        "illuminate/support": "^10.0",
-        "illuminate/view": "^10.0",
-        "illuminate/container": "^10.0",
-        "illuminate/config": "^10.0"
+        "illuminate/support": "^10.0 || ^11.0",
+        "illuminate/view": "^10.0 || ^11.0",
+        "illuminate/container": "^10.0 || ^11.0",
+        "illuminate/config": "^10.0 || ^11.0"
     },
     "require-dev": {
-        "laravel/laravel": "^10.0",
-        "phpstan/phpstan": "~1.10",
-        "mockery/mockery": "^1.6",
+        "laravel/laravel": "^10.0 || ^11.0",
+        "phpstan/phpstan": "^1.10.66",
+        "mockery/mockery": "^1.6.5",
         "phpunit/phpunit": "^10.5"
     },
     "autoload": {

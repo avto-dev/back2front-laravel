@@ -37,7 +37,7 @@ jobs: # Docs: <https://git.io/JvxXE>
         run: echo "output_dir=dir::$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies # Docs: <https://git.io/JfAKn#php---composer>
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.output_dir }}
           key: ${{ runner.os }}-composer-${{ matrix.setup }}-${{ hashFiles('**/composer.json') }}
@@ -68,7 +68,7 @@ jobs: # Docs: <https://git.io/JvxXE>
           XDEBUG_MODE: coverage
         run: composer test-cover
 
-      - uses: codecov/codecov-action@v3 # Docs: <https://github.com/codecov/codecov-action>
+      - uses: codecov/codecov-action@v4 # Docs: <https://github.com/codecov/codecov-action>
         if: matrix.coverage == 'yes'
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -94,7 +94,7 @@ jobs: # Docs: <https://git.io/JvxXE>
       - name: Execute tests
         run: yarn test-cover
 
-      - uses: codecov/codecov-action@v3 # Docs: <https://github.com/codecov/codecov-action>
+      - uses: codecov/codecov-action@v4 # Docs: <https://github.com/codecov/codecov-action>
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage/js/clover.xml

@@ -9,6 +9,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Config\Repository as ConfigRepository;
 
+/**
+ * @extends Collection<string, mixed>
+ */
 class Back2FrontStack extends Collection implements Back2FrontInterface
 {
     /**
