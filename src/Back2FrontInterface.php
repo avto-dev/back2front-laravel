@@ -9,6 +9,7 @@ use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * @extends Traversable<string, mixed>
+ * @extends Arrayable<string, mixed>
  */
 interface Back2FrontInterface extends Arrayable, Jsonable, Traversable, Countable
 {
@@ -16,7 +17,7 @@ interface Back2FrontInterface extends Arrayable, Jsonable, Traversable, Countabl
      * Add an element to send to the front.
      *
      * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return self|mixed
      */
