@@ -14,41 +14,41 @@ help: ## Show this help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  \033[32m%-14s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 build: ## Build docker images, required for current package environment
-	docker-compose build
+	docker compose build
 
 install-js: ## Install JS dependencies
-	docker-compose run $(RUN_ARGS) node yarn install
+	docker compose run $(RUN_ARGS) node yarn install
 
 latest: clean install-js ## Install latest php dependencies
-	docker-compose run $(RUN_ARGS) app composer update -n --ansi --prefer-dist --prefer-stable
+	docker compose run $(RUN_ARGS) app composer update -n --ansi --prefer-dist --prefer-stable
 
 install: clean install-js ## Install regular php dependencies
-	docker-compose run $(RUN_ARGS) app composer update -n --prefer-dist --no-interaction
+	docker compose run $(RUN_ARGS) app composer update -n --prefer-dist --no-interaction
 
 lowest: clean install-js ## Install lowest php dependencies
-	docker-compose run $(RUN_ARGS) app composer update -n --ansi --prefer-dist --prefer-lowest
+	docker compose run $(RUN_ARGS) app composer update -n --ansi --prefer-dist --prefer-lowest
 
 test-php: ## Execute php tests and linters
-	docker-compose run $(RUN_ARGS) app composer test
+	docker compose run $(RUN_ARGS) app composer test
 
 test-php-cover: ## Execute php tests with coverage
-	docker-compose run --rm --user "0:0" -e 'XDEBUG_MODE=coverage' app sh -c 'docker-php-ext-enable xdebug && su $(shell whoami) -s /bin/sh -c "composer phpunit-cover"'
+	docker compose run --rm --user "0:0" -e 'XDEBUG_MODE=coverage' app sh -c 'docker-php-ext-enable xdebug && su $(shell whoami) -s /bin/sh -c "composer phpunit-cover"'
 
 test-js: ## Execute JS tests
-	docker-compose run $(RUN_ARGS) node yarn test
+	docker compose run $(RUN_ARGS) node yarn test
 
 test-js-cover: ## Execute php tests with coverage
-	docker-compose run $(RUN_ARGS) node yarn test-cover
+	docker compose run $(RUN_ARGS) node yarn test-cover
 
 test: test-php test-js ## Execute all tests and linters
 
 test-cover: test-php-cover test-js-cover ## Execute php tests with coverage
 
 shell-js: ## Start shell into container with php
-	docker-compose run $(RUN_ARGS) node sh
+	docker compose run $(RUN_ARGS) node sh
 
 shell: ## Start shell into container with php
-	docker-compose run $(RUN_ARGS) app sh
+	docker compose run $(RUN_ARGS) app sh
 
 clean: ## Remove all dependencies and unimportant files
 	-rm -Rf ./composer.lock ./vendor ./coverage ./node_modules ./package-lock.json ./yarn.lock
