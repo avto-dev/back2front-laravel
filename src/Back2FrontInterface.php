@@ -8,8 +8,8 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * @extends Traversable<string, mixed>
- * @extends Arrayable<string, mixed>
+ * @extends Traversable<int|string, mixed>
+ * @extends Arrayable<int|string, mixed>
  */
 interface Back2FrontInterface extends Arrayable, Jsonable, Traversable, Countable
 {

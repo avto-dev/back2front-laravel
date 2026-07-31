@@ -18,16 +18,16 @@
         "php": "^8.2",
         "ext-mbstring": "*",
         "ext-json": "*",
-        "illuminate/support": "^10.0 || ^11.0 || ^12.0",
-        "illuminate/view": "^10.0 || ^11.0 || ^12.0",
-        "illuminate/container": "^10.0 || ^11.0 || ^12.0",
-        "illuminate/config": "^10.0 || ^11.0 || ^12.0"
+        "illuminate/support": "^11.0 || ^12.0 || ^13.0",
+        "illuminate/view": "^11.0 || ^12.0 || ^13.0",
+        "illuminate/container": "^11.0 || ^12.0 || ^13.0",
+        "illuminate/config": "^11.0 || ^12.0 || ^13.0"
     },
     "require-dev": {
-        "laravel/laravel": "^10.0 || ^11.0 || ^12.0",
-        "phpstan/phpstan": "^1.10.66",
-        "mockery/mockery": "^1.6.5",
-        "phpunit/phpunit": "^10.5"
+        "laravel/laravel": "^11.0 || ^12.0 || ^13.0",
+        "phpstan/phpstan": "2.1.54",
+        "mockery/mockery": "^1.6.10",
+        "phpunit/phpunit": "^10.5.35"
     },
     "autoload": {
         "psr-4": {

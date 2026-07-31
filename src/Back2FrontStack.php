@@ -10,7 +10,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Config\Repository as ConfigRepository;
 
 /**
- * @extends Collection<string, mixed>
+ * @extends Collection<int|string, mixed>
  */
 class Back2FrontStack extends Collection implements Back2FrontInterface
 {
@@ -55,7 +55,7 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int|string, mixed>
      */
     public function toArray(): array
     {
@@ -67,9 +67,9 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
     /**
      * Recompiles the array only with simple data types and arrays.
      *
-     * @param mixed[] $data
+     * @param array<int|string, mixed> $data
      *
-     * @return array<mixed>
+     * @return array<int|string, mixed>
      */
     protected function clearNoScalarsFromArrayRecursive(array $data): array
     {
@@ -94,7 +94,7 @@ class Back2FrontStack extends Collection implements Back2FrontInterface
      * @param int             $depth     Текущая глубина обхода
      * @param int             $max_depth Максимальная глубина обхода
      *
-     * @return array<mixed>
+     * @return array<int|string, mixed>
      */
     protected function formatDataRecursive($data, $depth = 0, $max_depth = 3): array
     {
